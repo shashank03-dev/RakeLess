@@ -107,6 +107,23 @@ Errors are always JSON: `400` bad upload, `403` cross-origin, `409` busy, `413` 
 
 ---
 
+## Design
+
+The interface is a dark "field lab at dusk": warm near-black, ember light for the brand, moss for what can stay, coral for paths to clear. Layout and type cues come from the hero and bento sections curated on [vibrant.design](https://vibrant.design/). The effects are reworked from ideas in [Aceternity UI](https://ui.aceternity.com/components) and written for this app in `src/ui/`, using plain CSS and `motion`, with no Tailwind and no copied components:
+
+| Piece | Based on | What changed |
+|---|---|---|
+| `DotField` | Dotted Glow, Background Ripple | A dot matrix that draws a leaf, glows near the pointer, and ripples on click |
+| `LeafFall` | Sparkles | Falling leaves with depth that drift away from the pointer |
+| `GlowCard` | Glowing Effect + Card Spotlight | One shell: a border light that follows the pointer's angle, plus an inner spotlight |
+| `GlowButton` | Moving Border, Hover Border Gradient, Magnetic Button | An orbiting border, a glow that follows the pointer, a magnetic pull |
+| `Compare`, `CipherCard`, `CardStack` | Compare, Evervault Card, Card Stack | A keyboard-accessible slider, cipher text revealed under the pointer, a deck with depth blur |
+| `ScrollStage`, `TracingBeam`, `InfiniteCards` | Container Scroll, Tracing Beam, Infinite Moving Cards | Spring-smoothed and paused when hovered or focused |
+| `FlipWords`, `Scramble`, `Typewriter`, `Wordmark` | Flip Words, Encrypted Text, Typewriter, Text Hover Effect | Adapted for screen readers and reduced motion |
+| `Segmented` | Tabs | A radio group with a sliding pill and arrow-key navigation |
+
+All motion respects `prefers-reduced-motion`. Canvas loops pause when off screen, and the print view (plan plus yard sign) is unchanged.
+
 ## Project layout
 
 ```
@@ -114,6 +131,7 @@ api/            Vercel functions (thin wrappers)
 server/         image normalization, Gemma call, spend guards, handlers, local server
 shared/         schema (Zod), grid geometry, rules, sources (used by server AND browser)
 src/            React app (photo map, inspector, corrections, print view)
+src/ui/         reusable effect components (backgrounds, cards, text, buttons, scroll)
 data/           recorded real example run
 tests/          Vitest
 ```
