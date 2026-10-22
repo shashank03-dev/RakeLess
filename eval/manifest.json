@@ -1,0 +1,632 @@
+{
+ "description": "RakeLess evaluation scenes. Distinct photos from Wikimedia Commons; no scene is a transform of another or of the bundled example. See eval/README.md.",
+ "scenes": [
+  {
+   "id": "e01-nj-lawn-sidewalk",
+   "split": "evaluation",
+   "file": "images/e01-nj-lawn-sidewalk.jpg",
+   "inputSha256": "efa3c70063852ecfa38fed0ec6a718c74099e1d193a020ef54718059fec1daaf",
+   "source": {
+    "title": "2023-11-13 14 51 42 A lawn and sidewalk covered with fallen leaves from a Japanese Maple in late autumn along Lochatong Road in the Mountainview section of Ewing Township, Mercer County, New Jersey.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:2023-11-13_14_51_42_A_lawn_and_sidewalk_covered_with_fallen_leaves_from_a_Japanese_Maple_in_late_autumn_along_Lochatong_Road_in_the_Mountainview_section_of_Ewing_Township,_Mercer_County,_New_Jersey.jpg",
+    "author": "Famartin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "downloaded": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/2023-11-13_14_51_42_A_lawn_and_sidewalk_covered_with_fallen_leaves_from_a_Japanese_Maple_in_late_autumn_along_Lochatong_Road_in_the_Mountainview_section_of_Ewing_Township%2C_Mercer_County%2C_New_Jersey.jpg/1920px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "modifications": "None to the file: this is the Wikimedia-generated thumbnail (long side 1280\u20131600 px). RakeLess normalizes it at run time (EXIF rotation, 1536 px cap, re-encode)."
+   },
+   "context": {
+    "region": "temperate_na",
+    "season": "autumn",
+    "concerns": "none"
+   },
+   "contextSource": "Commons title/description: Ewing Township, New Jersey, 2023-11-13 (\"late autumn\"). Concerns set to none for evaluation.",
+   "covers": [
+    "lawn",
+    "path",
+    "mixed",
+    "tree base",
+    "canopy"
+   ],
+   "annotation": {
+    "method": "Agent-labeled proxy: an AI coding agent viewed a 1024 px copy with the 3x3 grid drawn on it and wrote these labels before any model was run on the scene. Not expert ground truth.",
+    "labeledAtUtc": "2026-10-22T17:20:00Z"
+   },
+   "reference": [
+    {
+     "id": "A1",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "A2",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "A3",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B1",
+     "surface": "mixed",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "house, lawn and driveway strip"
+    },
+    {
+     "id": "B2",
+     "surface": "mixed",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "trunk, lawn and driveway"
+    },
+    {
+     "id": "B3",
+     "surface": "mixed",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "lawn, sidewalk start and driveway"
+    },
+    {
+     "id": "C1",
+     "surface": "lawn",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C2",
+     "surface": "lawn",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "lawn under the tree, densely covered"
+    },
+    {
+     "id": "C3",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "sidewalk is the majority; lawn strip at left"
+    }
+   ]
+  },
+  {
+   "id": "e02-md-driveway-closeup",
+   "split": "evaluation",
+   "file": "images/e02-md-driveway-closeup.jpg",
+   "inputSha256": "47cfbdfcbc05a3adcefd51abc3cd52d7bd29ddc50a0b07d59a43fdd6407baa71",
+   "source": {
+    "title": "Fallen Leaves.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Fallen_Leaves.jpg",
+    "author": "Mark Schellhase",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "downloaded": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Fallen_Leaves.jpg/1920px-Fallen_Leaves.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "modifications": "None to the file: this is the Wikimedia-generated thumbnail (long side 1280\u20131600 px). RakeLess normalizes it at run time (EXIF rotation, 1536 px cap, re-encode)."
+   },
+   "context": {
+    "region": "temperate_na",
+    "season": "autumn",
+    "concerns": "none"
+   },
+   "contextSource": "Commons description: \"Autumn leaves fallen on a driveway in Maryland.\" Concerns set to none for evaluation.",
+   "covers": [
+    "path",
+    "poor visibility (shallow focus)"
+   ],
+   "annotation": {
+    "method": "Agent-labeled proxy: an AI coding agent viewed a 1024 px copy with the 3x3 grid drawn on it and wrote these labels before any model was run on the scene. Not expert ground truth.",
+    "labeledAtUtc": "2026-10-22T17:20:00Z"
+   },
+   "reference": [
+    {
+     "id": "A1",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "unclear",
+     "note": "out of focus"
+    },
+    {
+     "id": "A2",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "unclear",
+     "note": "out of focus"
+    },
+    {
+     "id": "A3",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "unclear",
+     "note": "out of focus"
+    },
+    {
+     "id": "B1",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B2",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B3",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C1",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C2",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C3",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    }
+   ]
+  },
+  {
+   "id": "e03-uk-garden-steps",
+   "split": "evaluation",
+   "file": "images/e03-uk-garden-steps.jpg",
+   "inputSha256": "7a0fdf235d9484d30d2d2affd4bfb16fa9dcd270d13a08db5964001f293c1515",
+   "source": {
+    "title": "Garden steps Nuthurst West Sussex England.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Garden_steps_Nuthurst_West_Sussex_England.jpg",
+    "author": "Acabashi",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "downloaded": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Garden_steps_Nuthurst_West_Sussex_England.jpg/1920px-Garden_steps_Nuthurst_West_Sussex_England.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "modifications": "None to the file: this is the Wikimedia-generated thumbnail (long side 1280\u20131600 px). RakeLess normalizes it at run time (EXIF rotation, 1536 px cap, re-encode)."
+   },
+   "context": {
+    "region": "other",
+    "season": "other",
+    "concerns": "none"
+   },
+   "contextSource": "Commons description: private garden, Nuthurst, West Sussex, England; no season stated, so season is set to other. Concerns set to none.",
+   "covers": [
+    "steps",
+    "beds",
+    "mixed",
+    "out of scope (region)",
+    "partly blocked ground"
+   ],
+   "annotation": {
+    "method": "Agent-labeled proxy: an AI coding agent viewed a 1024 px copy with the 3x3 grid drawn on it and wrote these labels before any model was run on the scene. Not expert ground truth.",
+    "labeledAtUtc": "2026-10-22T17:20:00Z"
+   },
+   "reference": [
+    {
+     "id": "A1",
+     "surface": "mixed",
+     "material": "no_relevant_leaves",
+     "visibility": "clear",
+     "note": "grass and shrubs"
+    },
+    {
+     "id": "A2",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "A3",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B1",
+     "surface": "bed_or_tree_base",
+     "material": "no_relevant_leaves",
+     "visibility": "clear",
+     "note": "planted bank"
+    },
+    {
+     "id": "B2",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "a few leaves and petals on stone steps"
+    },
+    {
+     "id": "B3",
+     "surface": "mixed",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "step edge and plants"
+    },
+    {
+     "id": "C1",
+     "surface": "mixed",
+     "material": "no_relevant_leaves",
+     "visibility": "clear",
+     "note": "stone wall and flowers"
+    },
+    {
+     "id": "C2",
+     "surface": "mixed",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "stone step and plants"
+    },
+    {
+     "id": "C3",
+     "surface": "bed_or_tree_base",
+     "material": "no_relevant_leaves",
+     "visibility": "unclear",
+     "note": "ground hidden by foliage"
+    }
+   ]
+  },
+  {
+   "id": "e04-uk-woodland-litter",
+   "split": "evaluation",
+   "file": "images/e04-uk-woodland-litter.jpg",
+   "inputSha256": "6c4ca49a15989a88833815cca619043f8745732d1dabaef4286109c8d6cbf2bc",
+   "source": {
+    "title": "Leaf litter in Epping Forest off Fairmead Road, High Beach, Essex, England.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Leaf_litter_in_Epping_Forest_off_Fairmead_Road,_High_Beach,_Essex,_England.jpg",
+    "author": "Acabashi",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "downloaded": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Leaf_litter_in_Epping_Forest_off_Fairmead_Road%2C_High_Beach%2C_Essex%2C_England.jpg/1920px-Leaf_litter_in_Epping_Forest_off_Fairmead_Road%2C_High_Beach%2C_Essex%2C_England.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "modifications": "None to the file: this is the Wikimedia-generated thumbnail (long side 1280\u20131600 px). RakeLess normalizes it at run time (EXIF rotation, 1536 px cap, re-encode)."
+   },
+   "context": {
+    "region": "other",
+    "season": "other",
+    "concerns": "none"
+   },
+   "contextSource": "Commons description: leaf litter, Epping Forest, Essex, England; no season stated. Concerns set to none.",
+   "covers": [
+    "woodland floor (bed/tree base)",
+    "out of scope (region)"
+   ],
+   "annotation": {
+    "method": "Agent-labeled proxy: an AI coding agent viewed a 1024 px copy with the 3x3 grid drawn on it and wrote these labels before any model was run on the scene. Not expert ground truth.",
+    "labeledAtUtc": "2026-10-22T17:20:00Z"
+   },
+   "reference": [
+    {
+     "id": "A1",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "A2",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "A3",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B1",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B2",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B3",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C1",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C2",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C3",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    }
+   ]
+  },
+  {
+   "id": "e05-it-sidewalk-gate",
+   "split": "evaluation",
+   "file": "images/e05-it-sidewalk-gate.jpg",
+   "inputSha256": "66dfe2247a289443b22a07851dfa3eb5dbc1ec95143af980b67a373f9f052faf",
+   "source": {
+    "title": "Autumn on the sidewalk covered with leaves and rain.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Autumn_on_the_sidewalk_covered_with_leaves_and_rain.jpg",
+    "author": "Anna.Massini",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "downloaded": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Autumn_on_the_sidewalk_covered_with_leaves_and_rain.jpg/1920px-Autumn_on_the_sidewalk_covered_with_leaves_and_rain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "modifications": "None to the file: this is the Wikimedia-generated thumbnail (long side 1280\u20131600 px). RakeLess normalizes it at run time (EXIF rotation, 1536 px cap, re-encode)."
+   },
+   "context": {
+    "region": "other",
+    "season": "autumn",
+    "concerns": "none"
+   },
+   "contextSource": "Commons description (Italian): \"Autunno sul marciapiede con foglie e pioggia\" (autumn on the sidewalk, leaves and rain). Italy, so region other.",
+   "covers": [
+    "path",
+    "sky/buildings (no ground)",
+    "mixed",
+    "out of scope (region)"
+   ],
+   "annotation": {
+    "method": "Agent-labeled proxy: an AI coding agent viewed a 1024 px copy with the 3x3 grid drawn on it and wrote these labels before any model was run on the scene. Not expert ground truth.",
+    "labeledAtUtc": "2026-10-22T17:20:00Z"
+   },
+   "reference": [
+    {
+     "id": "A1",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "A2",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "A3",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B1",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B2",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B3",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C1",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "wet road and sidewalk"
+    },
+    {
+     "id": "C2",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "paving in front of the gate"
+    },
+    {
+     "id": "C3",
+     "surface": "mixed",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "ivy and paving"
+    }
+   ]
+  },
+  {
+   "id": "e06-uk-leaf-pile-dark",
+   "split": "evaluation",
+   "file": "images/e06-uk-leaf-pile-dark.jpg",
+   "inputSha256": "452ce00c1ec5fe59ae4b1bdcb8c3c6641cb7d12cedb371a9167db486d99dc296",
+   "source": {
+    "title": "Catching up with Autumn (5149811466).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Catching_up_with_Autumn_(5149811466).jpg",
+    "author": "McKay Savage from London, UK",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "downloaded": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Catching_up_with_Autumn_%285149811466%29.jpg/1920px-Catching_up_with_Autumn_%285149811466%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "modifications": "None to the file: this is the Wikimedia-generated thumbnail (long side 1280\u20131600 px). RakeLess normalizes it at run time (EXIF rotation, 1536 px cap, re-encode)."
+   },
+   "context": {
+    "region": "other",
+    "season": "autumn",
+    "concerns": "none"
+   },
+   "contextSource": "Flickr/Commons description: London, UK; \"the leaves are all down and collecting in piles on driveways\" (autumn).",
+   "covers": [
+    "leaf pile, surface hidden",
+    "poor visibility (dark)",
+    "out of scope (region)"
+   ],
+   "annotation": {
+    "method": "Agent-labeled proxy: an AI coding agent viewed a 1024 px copy with the 3x3 grid drawn on it and wrote these labels before any model was run on the scene. Not expert ground truth.",
+    "labeledAtUtc": "2026-10-22T17:20:00Z"
+   },
+   "reference": [
+    {
+     "id": "A1",
+     "surface": "unknown",
+     "material": "fallen_leaves",
+     "visibility": "unclear",
+     "note": "very dark"
+    },
+    {
+     "id": "A2",
+     "surface": "unknown",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "surface under the pile not visible"
+    },
+    {
+     "id": "A3",
+     "surface": "unknown",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "surface not visible"
+    },
+    {
+     "id": "B1",
+     "surface": "unknown",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B2",
+     "surface": "unknown",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B3",
+     "surface": "unknown",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C1",
+     "surface": "path_or_steps",
+     "material": "fallen_leaves",
+     "visibility": "clear",
+     "note": "only visible surface is asphalt, bottom left"
+    },
+    {
+     "id": "C2",
+     "surface": "unknown",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C3",
+     "surface": "unknown",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    }
+   ]
+  },
+  {
+   "id": "e07-uk-coppice-january",
+   "split": "evaluation",
+   "file": "images/e07-uk-coppice-january.jpg",
+   "inputSha256": "ccbe8816ebd06ee8a7cda9d519e62b39d8780bc4d4ca235dfd6fa9619ff8d725",
+   "source": {
+    "title": "Woodland Floor in January, Mayall's Coppice - geograph.org.uk - 109611.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Woodland_Floor_in_January,_Mayall%27s_Coppice_-_geograph.org.uk_-_109611.jpg",
+    "author": "Bob Embleton",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "downloaded": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Woodland_Floor_in_January%2C_Mayall%27s_Coppice_-_geograph.org.uk_-_109611.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "modifications": "None to the file: this is the Wikimedia-generated thumbnail (long side 1280\u20131600 px). RakeLess normalizes it at run time (EXIF rotation, 1536 px cap, re-encode)."
+   },
+   "context": {
+    "region": "other",
+    "season": "other",
+    "concerns": "none"
+   },
+   "contextSource": "Geograph/Commons title: \"Woodland Floor in January, Mayall's Coppice\" (England, January), so season other.",
+   "covers": [
+    "woodland floor",
+    "trunks/canopy",
+    "out of scope (region and season)"
+   ],
+   "annotation": {
+    "method": "Agent-labeled proxy: an AI coding agent viewed a 1024 px copy with the 3x3 grid drawn on it and wrote these labels before any model was run on the scene. Not expert ground truth.",
+    "labeledAtUtc": "2026-10-22T17:20:00Z"
+   },
+   "reference": [
+    {
+     "id": "A1",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "A2",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "A3",
+     "surface": "unknown",
+     "material": "no_relevant_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B1",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B2",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "B3",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C1",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C2",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    },
+    {
+     "id": "C3",
+     "surface": "bed_or_tree_base",
+     "material": "fallen_leaves",
+     "visibility": "clear"
+    }
+   ]
+  }
+ ]
+}
