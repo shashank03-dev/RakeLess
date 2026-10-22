@@ -6,6 +6,9 @@ export const MAX_UPLOAD_BYTES = 8 * 1024 * 1024;
 export const MAX_INPUT_PIXELS = 20_000_000;
 export const MAX_LONG_SIDE = 1536;
 const ALLOWED = new Set(['jpeg', 'png', 'webp']);
+const CROP_SIDE = 448;
+/** Everything about the model input that is not the image itself; part of the observation-cache key. */
+export const MODEL_INPUT_CONFIG = `grid3x3;long${MAX_LONG_SIDE};crop${CROP_SIDE};annot-v1`;
 
 export class ImageError extends Error {
   constructor(message: string, public status: 400 | 413) {
@@ -58,7 +61,7 @@ export async function annotateImage(img: NormalizedImage): Promise<Buffer> {
 }
 
 /** Nine crops matching the grid exactly, so the model can look closely at each cell. */
-export async function cropCells(img: NormalizedImage, maxSide = 448): Promise<{ id: string; buffer: Buffer }[]> {
+export async function cropCells(img: NormalizedImage, maxSide = CROP_SIDE): Promise<{ id: string; buffer: Buffer }[]> {
   return Promise.all(
     gridRegions(img.width, img.height).map(async (r) => ({
       id: r.id,
