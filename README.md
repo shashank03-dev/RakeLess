@@ -8,6 +8,8 @@ Fallen leaves in garden beds and under trees give shelter to insects and the bir
 
 ![RakeLess hero: "Your yard needs less raking than you think." over a glowing dot-matrix leaf, with the recorded run shown as an app window](docs/screenshots/hero.jpg)
 
+🎬 **[Watch the 90-second demo](docs/rakeless-demo.mp4)**. It was recorded end to end by `scripts/record-demo.cjs` and includes a real, uncut live Gemma run.
+
 ---
 
 ## A tour of the site
@@ -64,6 +66,7 @@ npm run dev               # UI → http://127.0.0.1:5173  (API on 127.0.0.1:8787
 | `npm test` | 37 tests: rules, schema, grid, image handling, API errors |
 | `npm run typecheck` | TypeScript check |
 | `npm run record-example -- <photo.jpg>` | Re-record the bundled example from a **real** model run |
+| `npm run record-demo` | Record the demo video end to end against the live site (Playwright + ffmpeg + pdftoppm). It makes one real model call |
 
 No key? The page still loads, and **“See a recorded example”** still works. Only new photo analysis is disabled, and the header says so.
 
