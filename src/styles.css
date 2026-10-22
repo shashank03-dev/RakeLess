@@ -601,3 +601,35 @@ em { font-style: italic; }
   .sign h1 { font-family: var(--serif); font-size: 44pt; margin: 0; letter-spacing: -0.02em; }
   .sign p { font-size: 20pt; margin: 6mm 0 0; }
 }
+
+/* ---------- chore receipt ---------- */
+.receipt { background: var(--bg-3); border: 1px solid var(--line); border-radius: 16px; padding: 0.9rem 1rem; display: grid; gap: 0.7rem; }
+.receipt-head { display: flex; align-items: center; gap: 0.45rem; color: var(--text-2); }
+.receipt-head h3 { margin: 0; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; }
+.plan-q { margin: 0 0 0.4rem; font-size: 0.92rem; }
+.plan-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 3.2rem)); gap: 0.3rem; }
+.plan-cell { min-height: 2.25rem; border-radius: 8px; border: 1px dashed var(--line-2); background: transparent; color: var(--text-2); cursor: pointer; font-size: 0.82rem; }
+.plan-cell.on { border-style: solid; border-color: var(--ember); background: rgba(255, 122, 47, 0.16); color: var(--text); }
+.plan-cell:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+.receipt-sum { margin: 0; font-size: 0.92rem; }
+.receipt-empty { margin: 0; }
+.rc-group h4 { display: flex; justify-content: space-between; margin: 0; font-size: 0.86rem; }
+.rc-group p { margin: 0.15rem 0 0.3rem; }
+.rc-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+.rc-line { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0.4rem; align-items: start; }
+.rc-id { border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--text-2); cursor: pointer; padding: 0.2rem 0; font-size: 0.78rem; }
+.rc-id:hover, .rc-id:focus-visible { color: var(--text); border-color: var(--ember); }
+.rc-body { display: grid; gap: 0.1rem; }
+.rc-act { display: inline-flex; gap: 0.3rem; align-items: center; font-size: 0.86rem; font-weight: 600; }
+.rc-why { font-size: 0.78rem; color: var(--text-3); }
+.warn-text { color: var(--amber); }
+.readiness { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: space-between; }
+.disclosure { margin: 0.6rem 0 0; font-size: 0.82rem; color: var(--text-2); display: flex; gap: 0.4rem; align-items: flex-start; }
+.capture-tips { margin: 0.4rem 0 0; padding-left: 1.1rem; font-size: 0.8rem; color: var(--text-3); }
+.prov-chip { display: inline-block; padding: 1px 7px; border-radius: 999px; border: 1px solid currentColor; margin-right: 0.35rem; font-size: 0.72rem; }
+.compare-vals { font-size: 0.8rem; color: var(--text-3); margin: 0.2rem 0 0; }
+@media print { .receipt-print { break-inside: avoid; } }
+.rc-act.tone-moss, .rc-group.tone-moss h4 span { color: var(--moss); }
+.rc-act.tone-brick, .rc-group.tone-brick h4 span { color: var(--coral); }
+.rc-act.tone-amber, .rc-group.tone-amber h4 span { color: var(--amber); }
+.rc-act.tone-stone, .rc-group.tone-stone h4 span { color: var(--text-2); }

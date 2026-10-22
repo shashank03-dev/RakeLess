@@ -20,9 +20,9 @@ const RULES: { id: string; title: string; body: string; src: string[]; out: Acti
 const PIPELINE = [
   { t: 'Your photo', d: 'One JPEG, PNG or WebP, up to 8 MB.' },
   { t: 'Normalize · 3×3 grid', d: 'Rotated upright, resized, metadata stripped, split into nine patches.' },
-  { t: 'Gemma 4 reads 9 patches', d: 'Surface, leaves on the ground, and visibility. Labels only, temperature 0.' },
+  { t: 'Gemma 4 reads 9 patches', d: 'Hosted (Gemini API) or local (Ollama), chosen by the server. Surface, leaves on the ground, and visibility. Labels only, temperature 0.' },
   { t: 'Schema check', d: 'Exactly nine cells with valid labels, checked on the server and again in your browser.' },
-  { t: 'Rules in your browser', d: 'Eight ordered rules turn labels into one of four marks.' },
+  { t: 'Rules in your browser', d: 'Nine ordered rules turn labels into one of four marks. Uncertainty is checked before paths.' },
   { t: 'You correct', d: 'Fix any label and the plan updates instantly. Both values are kept.' },
 ];
 
@@ -33,7 +33,7 @@ export function HowItDecides() {
         <Reveal className="section-head sticky-head">
           <span className="eyebrow">How it decides</span>
           <h2 className="h2">The model only <span className="accent">looks</span>. Plain rules make the call.</h2>
-          <p className="lede">Gemma describes each patch with a few fixed labels. Eight short rules, run in your browser, turn those labels into suggestions. You can read every rule, and correcting a label re-runs them without sending anything.</p>
+          <p className="lede">Gemma describes each patch with a few fixed labels. Nine short rules, run in your browser, turn those labels into suggestions. You can read every rule, and correcting a label re-runs them without sending anything.</p>
         </Reveal>
         <TracingBeam className="pipeline">
           <ol>

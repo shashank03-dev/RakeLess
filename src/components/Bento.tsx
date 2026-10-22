@@ -102,8 +102,8 @@ export function Bento({ example }: { example: Run }) {
               <span className="cipher-badge mono">sha256 · {example.provenance.normalizedImageSha256.slice(0, 12)}…</span>
             </CipherCard>
             <div className="bento-copy">
-              <h3>Your photo stays yours</h3>
-              <p>Metadata is stripped, the image is sent once for the model call, and RakeLess stores nothing. No accounts, no tracking.</p>
+              <h3>You can see where your photo goes</h3>
+              <p>Metadata is stripped on the server. The page tells you before upload whether the model is hosted (Google’s Gemini API) or running locally through Ollama. RakeLess keeps no images; only the nine text labels are cached in memory for up to 10 minutes. No accounts, no tracking.</p>
             </div>
           </GlowCard>
         </Reveal>

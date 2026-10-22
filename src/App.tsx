@@ -1,13 +1,14 @@
 import { AnimatePresence, motion } from 'motion/react';
-import { AlertTriangle, ArrowRight, Download, FlaskConical, Printer, RotateCcw, Radio } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Cpu, Download, FlaskConical, Printer, RotateCcw, Radio, ShieldCheck } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_CONTEXT, type Context, type Correction, type PatchId } from '../shared/schema';
 import { applyCorrections, decide, summarize } from '../shared/rules';
+import { buildReceipt } from '../shared/receipt';
 import { SOURCES } from '../shared/sources';
 import exampleRun from '../data/example-run.json';
 import { analyzePhoto, ApiError, getExample, type Run, type Stage } from './lib/api';
 import { CountUp, Reveal, VelocityMarquee, useLeafBurst } from './lib/fx';
-import { ACTION_META } from './lib/actions';
+import { ACTION_META, runKindLabel } from './lib/actions';
 import { GlowButton } from './ui/buttons';
 import { GlowCard } from './ui/cards';
 import { InfiniteCards } from './ui/scroll';
@@ -18,9 +19,9 @@ import { FinalCta, Footer } from './components/Closing';
 import { PhotoMap } from './components/PhotoMap';
 import { PatchInspector } from './components/PatchInspector';
 import { ActionList } from './components/ActionList';
-import { ChoreLedger } from './components/ChoreLedger';
+import { ChoreReceipt } from './components/ChoreReceipt';
 import { ContextPanel } from './components/ContextPanel';
-import { useHealth } from './components/ModelStatus';
+import { ReadinessNote, useHealth, type HealthState } from './components/ModelStatus';
 import { Stages } from './components/Stages';
 import { Dropzone } from './components/Dropzone';
 import { HowItDecides } from './components/HowItDecides';
@@ -45,7 +46,7 @@ export default function App() {
         <SourcesStrip />
         <Bento example={EXAMPLE} />
         <VelocityMarquee items={['Leave for now', 'Clear access', 'Review closely', 'No leaf task', 'Inspect before acting']} />
-        <Workbench ref={workbench} requestExample={requestExample} modelReady={health !== null && health !== 'error' && health.model.ready} />
+        <Workbench ref={workbench} requestExample={requestExample} health={health} />
         <HowItDecides />
         <Limits />
         <FinalCta onTry={goTry} onExample={showExample} />
@@ -73,10 +74,13 @@ function SourcesStrip() {
 
 type Busy = { stage: Stage; ctrl: AbortController };
 
-const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLElement>; requestExample: number; modelReady: boolean }) => {
+const Workbench = ({ ref, requestExample, health }: { ref: React.Ref<HTMLElement>; requestExample: number; health: HealthState }) => {
+  const modelReady = health.phase === 'ready';
+  const model = health.health?.model;
   const [ctx, setCtx] = useState<Context>(DEFAULT_CONTEXT);
   const [run, setRun] = useState<Run | null>(null);
   const [corrections, setCorrections] = useState<Correction[]>([]);
+  const [intended, setIntended] = useState<PatchId[]>([]);
   const [selected, setSelected] = useState<PatchId | null>(null);
   const [pending, setPending] = useState<{ file: File; url: string } | null>(null);
   const [busy, setBusy] = useState<Busy | null>(null);
@@ -89,6 +93,8 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
   const decisions = useMemo(() => (run ? decide(run.observations, ctx, corrections) : []), [run, ctx, corrections]);
   const effective = useMemo(() => (run ? applyCorrections(run.observations, corrections) : []), [run, corrections]);
   const summary = summarize(decisions);
+  const receipt = useMemo(() => (run ? buildReceipt(run.observations, decisions, corrections, intended, ctx) : null), [run, decisions, corrections, intended, ctx]);
+  const toggleIntended = (id: PatchId) => setIntended((xs) => (xs.includes(id) ? xs.filter((x) => x !== id) : [...xs, id]));
   const held = decisions.filter((d) => d.ruleId === 'R4').length;
   const prevActions = useRef<Record<string, string>>({});
 
@@ -121,7 +127,7 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
   const reset = (clearCtx = true) => {
     busy?.ctrl.abort();
     if (pending) URL.revokeObjectURL(pending.url);
-    setPending(null); setRun(null); setCorrections([]); setSelected(null); setError(null); setBusy(null);
+    setPending(null); setRun(null); setCorrections([]); setIntended([]); setSelected(null); setError(null); setBusy(null);
     prevActions.current = {};
     if (clearCtx) setCtx(DEFAULT_CONTEXT);
   };
@@ -137,7 +143,8 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
     setError(null);
     setBusy({ stage: 'preparing', ctrl });
     try {
-      const out = await analyzePhoto(pending.file, ctx, (stage) => setBusy({ stage, ctrl }), ctrl.signal);
+      const budget = health.health?.timing.requestBudgetMs ?? 55_000;
+      const out = await analyzePhoto(pending.file, ctx, (stage) => setBusy({ stage, ctrl }), ctrl.signal, budget + 15_000);
       URL.revokeObjectURL(pending.url);
       setPending(null);
       setRun(out);
@@ -145,6 +152,8 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
       setAnnounce(`Analysis complete${out.provenance.cacheHit ? ' (cached result)' : ''}. Nine patches mapped.`);
     } catch (e) {
       if (!(e instanceof ApiError && e.status === 499)) setError(e instanceof Error ? e.message : 'Analysis failed.');
+      // A provider or network failure may mean readiness changed; re-probe instead of leaving a stale "ready".
+      if (e instanceof ApiError && [0, 502, 503, 504].includes(e.status)) health.recheck();
     } finally {
       setBusy(null);
     }
@@ -159,12 +168,17 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
       app: 'RakeLess',
       exportedAtUtc: new Date().toISOString(),
       scopeNote: 'Photo-based suggestions for temperate North American autumn yards. Not a survey or certification; inspect before acting.',
+      runKind: runKindLabel(run),
       context: ctx,
       image: { width: run.image.width, height: run.image.height },
       provenance: run.provenance,
+      clientWallMs: run.clientWallMs ?? null,
       originalObservations: run.observations,
       userCorrections: corrections,
       decisions,
+      intendedToClear: intended,
+      choreReceipt: receipt,
+      receiptNote: 'Counts are grid cells, not area or time. Intended patches are what the user marked; nothing was inferred.',
       sourceIds: [...new Set(decisions.flatMap((d) => d.sourceIds))],
     };
     const a = document.createElement('a');
@@ -203,12 +217,12 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
             <h3 className="h3">Your photo</h3>
             {!run && !pending && (
               <>
-                <Dropzone onFile={pick} disabled={!!busy} />
+                <Dropzone onFile={pick} disabled={!!busy} destination={model?.destination} />
                 <div className="or-row">
                   <span>or</span>
                   <button type="button" className="link-btn strong" onClick={loadExample}><FlaskConical size={15} aria-hidden /> Load the recorded example. No model call.</button>
                 </div>
-                {!modelReady && <p className="ctx-note warn">The live model isn’t reachable right now, so new photos can’t be analyzed. The recorded example still works.</p>}
+                <ReadinessNote health={health} />
               </>
             )}
             {pending && (
@@ -219,6 +233,10 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
                 ) : (
                   <div className="pending-actions">
                     <p className="mono fineprint">{pending.file.name} · {(pending.file.size / 1024 / 1024).toFixed(1)} MB</p>
+                    {model && (
+                      <p className="disclosure">{model.local ? <Cpu size={15} aria-hidden /> : <ShieldCheck size={15} aria-hidden />}<span><b>Where it goes:</b> {model.destination}</span></p>
+                    )}
+                    <ReadinessNote health={health} />
                     <GlowButton onClick={analyze} disabled={!modelReady}>Analyze with Gemma <ArrowRight size={16} aria-hidden /></GlowButton>
                     <button type="button" className="link-btn" onClick={() => reset(false)}>Choose a different photo</button>
                   </div>
@@ -242,10 +260,12 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
 
       {run && p && (
         <motion.div className="board" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
-          <div className={`provenance mode-${p.mode}`}>
-            {p.mode === 'recorded' ? <FlaskConical size={15} aria-hidden /> : <Radio size={15} aria-hidden />}
+          <div className={`provenance mode-${p.mode}${p.cacheHit ? ' mode-cached' : ''}`}>
+            {p.mode === 'recorded' ? <FlaskConical size={15} aria-hidden /> : p.localInference ? <Cpu size={15} aria-hidden /> : <Radio size={15} aria-hidden />}
             <span className="mono">
-              {p.mode === 'recorded' ? 'RECORDED RUN' : 'LIVE RUN'}{p.cacheHit ? ' · CACHED' : ''} · {p.modelName} · {(p.durationMs / 1000).toFixed(1)} s · retries {p.retryCount} · {new Date(p.timestampUtc).toISOString().slice(0, 16).replace('T', ' ')} UTC
+              <span className="prov-chip">{runKindLabel(run)}</span>
+              {p.providerLabel ?? p.provider} · {p.modelName} · model {(p.durationMs / 1000).toFixed(1)} s{p.cacheHit ? ` (from ${p.cachedAtUtc?.slice(11, 16) ?? 'earlier'} UTC)` : ''}
+              {run.clientWallMs ? ` · wait ${(run.clientWallMs / 1000).toFixed(1)} s` : ''} · calls {p.attempts ?? p.retryCount + 1} · {new Date(p.timestampUtc).toISOString().slice(0, 16).replace('T', ' ')} UTC
             </span>
           </div>
 
@@ -282,6 +302,8 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
                     effective={effective.find((o) => o.id === sel)!}
                     decision={decisions.find((d) => d.id === sel)!}
                     correction={corrections.find((c) => c.id === sel)}
+                    intended={intended.includes(sel)}
+                    onToggleIntended={() => toggleIntended(sel)}
                     onCorrect={(c) => correct(sel, c)}
                     onClose={() => setSelected(null)}
                   />
@@ -298,7 +320,7 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
                         )}
                       </div>
                     )}
-                    <ChoreLedger decisions={decisions} />
+                    {receipt && <ChoreReceipt receipt={receipt} intended={intended} onToggle={toggleIntended} onSelect={setSelected} />}
                     <ActionList decisions={decisions} selected={sel} onSelect={setSelected} />
                   </motion.div>
                 )}
@@ -311,7 +333,7 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
               </div>
             </aside>
           </div>
-          <PrintPlan run={run} decisions={decisions} effective={effective} ctx={ctx} withSign={withSign} />
+          <PrintPlan run={run} decisions={decisions} effective={effective} ctx={ctx} withSign={withSign} receipt={receipt} />
         </motion.div>
       )}
       {burst.layer}

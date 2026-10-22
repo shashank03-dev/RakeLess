@@ -11,7 +11,7 @@ export function FinalCta({ onTry, onExample }: { onTry: () => void; onExample: (
       <Lamp>
         <Reveal className="final-inner">
           <h2 className="h2 final-title">Go look at your yard.<br />Then rake <span className="accent">less</span>.</h2>
-          <p className="lede">One photo, nine patches, about fifteen seconds. Every suggestion is provisional, so walk the patch before you act.</p>
+          <p className="lede">One photo, nine patches, a reason for each. Every suggestion is provisional, so walk the patch before you act.</p>
           <div className="hero-ctas center">
             <GlowButton size="lg" onClick={onTry}>Check my photo <ArrowRight size={18} aria-hidden /></GlowButton>
             <GlowButton size="lg" variant="ghost" onClick={onExample}><FlaskConical size={17} aria-hidden /> Recorded example</GlowButton>
@@ -35,9 +35,9 @@ export function Footer() {
         </nav>
       </div>
       <div className="footer-cols">
-        <p>A small build for the DEV Hacktoberfest Open-Source AI Challenge, Week 3: Slow and Steady. Gemma 4 open-weight vision, served through the Gemini API. The rules are plain TypeScript.</p>
+        <p>A small build for the DEV Hacktoberfest Open-Source AI Challenge, Week 3: Slow and Steady. Gemma 4 open-weight vision, hosted through the Gemini API on the public demo or run locally with Ollama. The rules are plain TypeScript.</p>
         <p>Sources inform the prototype rules. They are not endorsements or expert review of this app. Photo credit: Michael Gil, CC BY 2.0.</p>
-        <p className="mono">MIT licensed · no accounts · no tracking · photos are not stored</p>
+        <p className="mono">MIT licensed · no accounts · no tracking · no image storage</p>
       </div>
       <div className="footer-mark"><Wordmark /></div>
     </footer>

@@ -3,11 +3,26 @@ import { VisionResult, type AnalyzeResponse, type Context } from '../../shared/s
 export type Attribution = {
   title: string; author: string; place: string; license: string; licenseUrl: string; sourceUrl: string; modifications: string;
 };
-export type Run = AnalyzeResponse & { attribution?: Attribution };
+/** clientWallMs: measured in this browser, from pressing Analyze to a validated answer. */
+export type Run = AnalyzeResponse & { attribution?: Attribution; clientWallMs?: number };
 
 export type Health = {
   app: { ready: boolean };
-  model: { ready: boolean; provider: string; name: string; reason: string | null };
+  model: {
+    status: 'ready' | 'unavailable' | 'config_error';
+    ready: boolean;
+    provider: string;
+    providerLabel: string;
+    local: boolean;
+    destination: string;
+    name: string;
+    version: string | null;
+    detail: string | null;
+    reason: string | null;
+    checkedAtUtc: string;
+  };
+  retention: { observationCacheTtlSeconds: number; storesImages: boolean };
+  timing: { requestBudgetMs: number };
   promptVersion: string;
   rulesVersion: string;
 };
@@ -22,16 +37,10 @@ const MAX_BYTES = 8 * 1024 * 1024;
 const DIRECT_UPLOAD_BYTES = 3.5 * 1024 * 1024; // keep under the hosting body limit
 const TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 
-export async function getHealth(): Promise<Health> {
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), 8000);
-  try {
-    const r = await fetch('/api/health', { signal: ctrl.signal });
-    if (!r.ok) throw new Error();
-    return await r.json();
-  } finally {
-    clearTimeout(t);
-  }
+export async function getHealth(signal: AbortSignal): Promise<Health> {
+  const r = await fetch('/api/health', { signal, cache: 'no-store' });
+  if (!r.ok) throw new ApiError(`Health check answered ${r.status}.`, r.status);
+  return await r.json();
 }
 
 export async function getExample(id: string): Promise<Run> {
@@ -61,7 +70,8 @@ async function prepare(file: File): Promise<Blob> {
   return new Promise((res, rej) => canvas.toBlob((b) => (b ? res(b) : rej(new ApiError('Could not prepare the image.', 400))), 'image/jpeg', 0.9));
 }
 
-export async function analyzePhoto(file: File, ctx: Context, onStage: (s: Stage) => void, signal: AbortSignal): Promise<Run> {
+export async function analyzePhoto(file: File, ctx: Context, onStage: (s: Stage) => void, signal: AbortSignal, timeoutMs = 70_000): Promise<Run> {
+  const t0 = performance.now();
   onStage('preparing');
   const blob = await prepare(file);
   const form = new FormData();
@@ -73,20 +83,20 @@ export async function analyzePhoto(file: File, ctx: Context, onStage: (s: Stage)
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/analyze');
     xhr.responseType = 'json';
-    xhr.timeout = 70_000;
+    xhr.timeout = timeoutMs;
     xhr.upload.onload = () => onStage('reading');
     xhr.onload = () => resolve({ status: xhr.status, body: xhr.response });
-    xhr.onerror = () => reject(new ApiError('Network error — the server could not be reached.', 0));
+    xhr.onerror = () => reject(new ApiError('Network error: the server could not be reached.', 0));
     xhr.ontimeout = () => reject(new ApiError('The request timed out.', 504));
     signal.addEventListener('abort', () => { xhr.abort(); reject(new ApiError('Cancelled.', 499)); });
     xhr.send(form);
   });
-  if (status !== 200) throw new ApiError(body?.error ?? `Analysis failed (${status}).`, status);
+  if (status !== 200) throw new ApiError(body?.error ?? (status === 0 ? 'The connection was interrupted.' : `Analysis failed (${status}).`), status);
 
   onStage('validating');
   // Re-check the contract in the browser too; a server bug must not become a plan.
   const checked = VisionResult.safeParse({ observations: body.observations });
   if (!checked.success) throw new ApiError('The response did not contain nine valid observations.', 502);
   onStage('rules');
-  return { ...body, observations: checked.data.observations };
+  return { ...body, observations: checked.data.observations, clientWallMs: Math.round(performance.now() - t0) };
 }

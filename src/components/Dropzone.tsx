@@ -4,7 +4,7 @@ import { Camera, ImageUp } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { GlowButton } from '../ui/buttons';
 
-export function Dropzone({ onFile, disabled }: { onFile: (f: File) => void; disabled?: boolean }) {
+export function Dropzone({ onFile, disabled, destination }: { onFile: (f: File) => void; disabled?: boolean; destination?: string }) {
   const input = useRef<HTMLInputElement>(null);
   const camera = useRef<HTMLInputElement>(null);
   const [over, setOver] = useState(false);
@@ -23,7 +23,12 @@ export function Dropzone({ onFile, disabled }: { onFile: (f: File) => void; disa
         <ImageUp size={26} strokeWidth={1.6} />
       </motion.div>
       <p className="dz-title">{over ? 'Drop it here' : 'Drop one photo of your yard'}</p>
-      <p className="dz-sub">JPEG, PNG or WebP · up to 8 MB · stand back so paths and beds are both in frame. Sent once to Google’s Gemini API to run Gemma; RakeLess stores nothing.</p>
+      <p className="dz-sub">JPEG, PNG or WebP · up to 8 MB. {destination ?? 'Checking where photos are processed…'}</p>
+      <ul className="capture-tips">
+        <li>Point the camera at the ground, standing back far enough to get paths, beds and lawn in one frame.</li>
+        <li>Each of the nine cells should show mostly one surface. A cell that mixes lawn and bed gets “review”.</li>
+        <li>Daylight, no people or house numbers in frame. EXIF metadata (including GPS) is removed on the server.</li>
+      </ul>
       <div className="dz-actions">
         <GlowButton size="sm" disabled={disabled} onClick={() => input.current?.click()}><ImageUp size={16} aria-hidden /> Choose photo</GlowButton>
         <GlowButton size="sm" variant="ghost" disabled={disabled} onClick={() => camera.current?.click()}><Camera size={16} aria-hidden /> Take photo</GlowButton>

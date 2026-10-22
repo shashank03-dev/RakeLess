@@ -25,7 +25,7 @@ export function ChoreLedger({ decisions, play = true }: { decisions: Decision[];
   return (
     <div ref={ref} className="ledger">
       <div className="ledger-head">
-        <span className="mono">To do · raking</span>
+        <span className="mono">Example plan · rake every leafy patch</span>
         <span className="mono">{settled ? `${chores.filter((c) => c.action !== 'leave').length} left` : `${chores.length} planned`}</span>
       </div>
       <ul>
@@ -40,7 +40,7 @@ export function ChoreLedger({ decisions, play = true }: { decisions: Decision[];
                 <motion.span className="strike" initial={false} animate={{ scaleX: cancelled ? 1 : 0 }} transition={{ duration: 0.45, delay: reduce ? 0 : i * 0.12, ease: [0.6, 0, 0.2, 1] }} />
               </span>
               <motion.span className={`ledger-tag tone-${meta.tone}`} initial={false} animate={{ opacity: settled ? 1 : 0, x: settled ? 0 : -6 }} transition={{ delay: reduce ? 0 : 0.25 + i * 0.12 }}>
-                <meta.Icon size={12} aria-hidden /> {d.action === 'leave' ? 'can wait' : d.action === 'clear' ? 'still do' : 'check first'}
+                <meta.Icon size={12} aria-hidden /> {d.action === 'leave' ? 'reconsider' : d.action === 'clear' ? 'still do' : 'check first'}
               </motion.span>
             </li>
           );

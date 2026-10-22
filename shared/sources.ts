@@ -18,7 +18,7 @@ export const SOURCES: Record<string, Source> = {
     url: 'https://blog.nwf.org/2026/09/leave-the-leaves-to-attract-birds/',
     appliesTo: 'Leaf cover in garden beds and under trees',
     summary:
-      'Fallen leaves left in beds and under trees shelter overwintering insects, which in turn feed birds. Raking them all away removes that cover.',
+      'A leaf layer is foraging ground for birds, and leaves left unraked or piled at the garden edge supply nesting material. It does not address paths, lawns, or diseased plants.',
   },
   cleanup: {
     id: 'cleanup',
@@ -26,9 +26,9 @@ export const SOURCES: Record<string, Source> = {
     publisher: 'Penn State Extension',
     date: '2026-09-09',
     url: 'https://extension.psu.edu/fall-garden-tasks',
-    appliesTo: 'Fall cleanup decisions and their exceptions',
+    appliesTo: 'Leaves in beds, diseased material, and heavy layers on lawns',
     summary:
-      'Fall cleanup is a set of choices, not one chore. Diseased plant material and site-specific problems are exceptions to leaving things in place.',
+      'In garden beds, leaves can stay where they fall to insulate roots. Diseased stems and leaves are the exception: destroy them rather than compost them. On lawns you do not need to rake, but a heavy layer can smother grass.',
   },
   turf: {
     id: 'turf',

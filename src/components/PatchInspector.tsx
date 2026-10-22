@@ -18,16 +18,19 @@ type Props = {
   correction?: Correction;
   onCorrect: (c: Correction | null) => void;
   onClose: () => void;
+  intended: boolean;
+  onToggleIntended: () => void;
 };
 
-export function PatchInspector({ id, src, width, height, original, effective, decision, correction, onCorrect, onClose }: Props) {
+export function PatchInspector({ id, src, width, height, original, effective, decision, correction, onCorrect, onClose, intended, onToggleIntended }: Props) {
   const meta = ACTION_META[decision.action];
   const set = (patch: Partial<Correction>) => {
     const next: Correction = { ...(correction ?? { id }), ...patch, id };
     // Drop values that match the model so "corrected" stays meaningful — except a deliberate path confirmation.
     if (next.material === original.material) delete next.material;
+    if (next.visibility === original.visibility) delete next.visibility;
     if (next.siteConcern === false) delete next.siteConcern;
-    const empty = next.surface === undefined && next.material === undefined && next.siteConcern === undefined;
+    const empty = next.surface === undefined && next.material === undefined && next.visibility === undefined && next.siteConcern === undefined;
     onCorrect(empty ? null : next);
   };
 
@@ -54,6 +57,11 @@ export function PatchInspector({ id, src, width, height, original, effective, de
 
       <p className="inspector-detail">{decision.detail}</p>
 
+      <label className="check">
+        <input type="checkbox" checked={intended} onChange={onToggleIntended} />
+        <span>I was planning to clear this patch</span>
+      </label>
+
       <div className="observed">
         <div className="observed-row">
           <span className="mono label">Model saw</span>
@@ -64,6 +72,11 @@ export function PatchInspector({ id, src, width, height, original, effective, de
           <div><dt>Ground</dt><dd>{MATERIAL_LABEL[original.material]}</dd></div>
           <div><dt>Visibility</dt><dd>{original.visibility}</dd></div>
         </dl>
+        {correction && (
+          <p className="compare-vals mono">
+            Now used: {SURFACE_LABEL[effective.surface]} · {MATERIAL_LABEL[effective.material]} · {effective.visibility}{effective.siteConcern ? ' · site concern' : ''} <span>(your correction; the model’s values above are kept)</span>
+          </p>
+        )}
         <p className="fineprint">Observation, not proof. Structure was validated; the content was not verified.</p>
       </div>
 
@@ -78,6 +91,12 @@ export function PatchInspector({ id, src, width, height, original, effective, de
         <div className="seg-label">On the ground</div>
         <Segmented name={`material-${id}`} label="Material" size="sm" value={effective.material} userValue={correction?.material}
           options={MATERIALS.map((v) => ({ v, label: MATERIAL_LABEL[v] }))} onChange={(v: Material) => set({ material: v })} />
+        {original.visibility === 'unclear' && (
+          <label className="check">
+            <input type="checkbox" checked={correction?.visibility === 'clear'} onChange={(e) => set({ visibility: e.target.checked ? 'clear' : 'unclear' })} />
+            <span>I looked at this patch in person (resolves “unclear photo” only)</span>
+          </label>
+        )}
         <label className="check">
           <input type="checkbox" checked={!!correction?.siteConcern} onChange={(e) => set({ siteConcern: e.target.checked })} />
           <span>Known plant disease or other concern in this patch</span>
