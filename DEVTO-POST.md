@@ -28,7 +28,9 @@ It's a tool for being lazy on purpose, with a reason written down for every patc
 
 **Live:** https://rakeless.vercel.app
 
-<!-- TODO: embed a ~60 s video (see DEMO-SCRIPT.md), e.g. {% embed https://youtu.be/XXXX %} -->
+<!-- TODO: upload docs/rakeless-demo.mp4 to YouTube (or similar) and embed it: {% embed https://youtu.be/XXXX %} -->
+
+The demo video was recorded **from code**: a Playwright script drives the live site, makes one real Gemma call on a photo it has never seen, and shows the uncut wait.
 
 The landing page shows a **saved, real Gemma 4 run** on a CC BY 2.0 photo, clearly labeled "recorded run", so visiting costs nothing. The workbench below it analyses your own photo live.
 
