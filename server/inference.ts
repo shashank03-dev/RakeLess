@@ -1,5 +1,5 @@
-import { MODEL_RESPONSE_SCHEMA, VisionResult, type Observation } from '../shared/schema';
-import { annotateImage, cropCells, type NormalizedImage } from './image';
+import { MODEL_RESPONSE_SCHEMA, VisionResult, type Observation } from '../shared/schema.js';
+import { annotateImage, cropCells, type NormalizedImage } from './image.js';
 
 export const PROMPT_VERSION = 'prompt-2026-10-22.3';
 export const MODEL_NAME = process.env.GEMMA_MODEL || 'gemma-4-26b-a4b-it';

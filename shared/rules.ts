@@ -1,4 +1,4 @@
-import type { Context, Correction, Decision, Observation, PatchId } from './schema';
+import type { Context, Correction, Decision, Observation, PatchId } from './schema.js';
 
 export const RULES_VERSION = 'rules-2026-10-22.1';
 

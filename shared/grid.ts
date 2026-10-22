@@ -1,4 +1,4 @@
-import { PATCH_IDS, type PatchId } from './schema';
+import { PATCH_IDS, type PatchId } from './schema.js';
 
 export type Region = { id: PatchId; left: number; top: number; width: number; height: number };
 

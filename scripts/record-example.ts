@@ -4,10 +4,10 @@
  * Writes the normalized photo to public/examples/ and the run to data/example-run.json.
  */
 import fs from 'node:fs';
-import { normalizeImage } from '../server/image';
-import { observe, MODEL_NAME, PROMPT_VERSION } from '../server/inference';
-import { RULES_VERSION } from '../shared/rules';
-import type { AnalyzeResponse } from '../shared/schema';
+import { normalizeImage } from '../server/image.js';
+import { observe, MODEL_NAME, PROMPT_VERSION } from '../server/inference.js';
+import { RULES_VERSION } from '../shared/rules.js';
+import type { AnalyzeResponse } from '../shared/schema.js';
 
 const src = process.argv[2];
 if (!src) throw new Error('Pass the original photo path.');

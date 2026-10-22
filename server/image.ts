@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 import sharp, { type Metadata } from 'sharp';
-import { gridRegions } from '../shared/grid';
+import { gridRegions } from '../shared/grid.js';
 
 export const MAX_UPLOAD_BYTES = 8 * 1024 * 1024;
 export const MAX_INPUT_PIXELS = 20_000_000;

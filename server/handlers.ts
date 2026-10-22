@@ -1,8 +1,8 @@
-import { Context, type AnalyzeResponse } from '../shared/schema';
-import { RULES_VERSION } from '../shared/rules';
-import { normalizeImage, ImageError, MAX_UPLOAD_BYTES } from './image';
-import { observe, modelHealth, ModelError, MODEL_NAME, PROMPT_VERSION } from './inference';
-import { checkGate, clientIp, consume, responseCache, sameOrigin, withSlot } from './guard';
+import { Context, type AnalyzeResponse } from '../shared/schema.js';
+import { RULES_VERSION } from '../shared/rules.js';
+import { normalizeImage, ImageError, MAX_UPLOAD_BYTES } from './image.js';
+import { observe, modelHealth, ModelError, MODEL_NAME, PROMPT_VERSION } from './inference.js';
+import { checkGate, clientIp, consume, responseCache, sameOrigin, withSlot } from './guard.js';
 import example from '../data/example-run.json' with { type: 'json' };
 
 const json = (status: number, body: unknown, headers: Record<string, string> = {}) =>

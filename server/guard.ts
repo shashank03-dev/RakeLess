@@ -4,7 +4,7 @@
  * State is per serverless instance — the edge rate-limit rule in vercel.json /
  * the Vercel firewall is the shared outer layer. See README "API key design".
  */
-import type { AnalyzeResponse } from '../shared/schema';
+import type { AnalyzeResponse } from '../shared/schema.js';
 
 const num = (v: string | undefined, d: number) => (v && Number.isFinite(Number(v)) ? Number(v) : d);
 export const LIMITS = {
