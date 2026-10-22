@@ -1,0 +1,94 @@
+{
+  "image": {
+    "width": 1536,
+    "height": 1152,
+    "src": "/examples/fallen-leaves.jpg"
+  },
+  "observations": [
+    {
+      "id": "A1",
+      "surface": "unknown",
+      "material": "no_relevant_leaves",
+      "visibility": "clear",
+      "evidence": "The cell shows tree branches and leaves against the sky."
+    },
+    {
+      "id": "A2",
+      "surface": "unknown",
+      "material": "no_relevant_leaves",
+      "visibility": "clear",
+      "evidence": "The cell shows tree branches and leaves."
+    },
+    {
+      "id": "A3",
+      "surface": "unknown",
+      "material": "no_relevant_leaves",
+      "visibility": "clear",
+      "evidence": "The cell shows tree branches against the sky."
+    },
+    {
+      "id": "B1",
+      "surface": "unknown",
+      "material": "no_relevant_leaves",
+      "visibility": "clear",
+      "evidence": "The cell shows a wooden shed and tree trunks."
+    },
+    {
+      "id": "B2",
+      "surface": "unknown",
+      "material": "no_relevant_leaves",
+      "visibility": "clear",
+      "evidence": "The cell shows several large tree trunks."
+    },
+    {
+      "id": "B3",
+      "surface": "unknown",
+      "material": "no_relevant_leaves",
+      "visibility": "clear",
+      "evidence": "The cell shows a view down a path through trees."
+    },
+    {
+      "id": "C1",
+      "surface": "bed_or_tree_base",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "The ground is covered in fallen orange leaves."
+    },
+    {
+      "id": "C2",
+      "surface": "bed_or_tree_base",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "The ground is covered in fallen orange leaves."
+    },
+    {
+      "id": "C3",
+      "surface": "path_or_steps",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "The cell shows a gravel path with some fallen leaves."
+    }
+  ],
+  "provenance": {
+    "mode": "recorded",
+    "provider": "Google Gemini API",
+    "modelName": "gemma-4-26b-a4b-it",
+    "modelVersion": "gemma-4-26b-a4b-it",
+    "promptVersion": "prompt-2026-10-22.3",
+    "rulesVersion": "rules-2026-10-22.1",
+    "normalizedImageSha256": "5ecc3852d243702a26259d1cf01f379dd584c8eae8997cace344509c236274e1",
+    "timestampUtc": "2026-10-22T14:33:12.462Z",
+    "durationMs": 16660,
+    "retryCount": 1,
+    "cacheHit": false
+  },
+  "attribution": {
+    "title": "Fallen Leaves October 2011",
+    "author": "Michael Gil",
+    "place": "Ontario, Canada",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fallen_Leaves_October_2011.jpg",
+    "modifications": "Resized to 1536 px on the long side and re-encoded; grid overlay drawn by RakeLess."
+  }
+}
