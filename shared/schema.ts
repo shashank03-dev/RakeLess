@@ -57,6 +57,8 @@ export const Correction = z
     id: PatchId,
     surface: Surface.optional(),
     material: Material.optional(),
+    /** 'clear' means "I looked at this patch on site"; it resolves photo-visibility doubt only. */
+    visibility: Visibility.optional(),
     siteConcern: z.boolean().optional(),
   })
   .strict();
@@ -73,17 +75,30 @@ export type Decision = {
 };
 
 export type Provenance = {
-  mode: 'live' | 'recorded' | 'manual-test';
+  /** live: fresh or cached result for this request · recorded: a saved real run replayed · evaluation: produced by the eval harness. */
+  mode: 'live' | 'recorded' | 'evaluation';
+  /** Provider id ('gemini' | 'ollama') for new runs; older recordings carry a display name here. */
   provider: string;
+  providerLabel?: string;
+  /** True only when the model ran on the same machine as the RakeLess server. */
+  localInference?: boolean;
   modelName: string;
+  /** What the provider reported: the Gemini modelVersion, or the Ollama manifest digest. Null when not reported. */
   modelVersion: string | null;
   promptVersion: string;
   rulesVersion: string;
   normalizedImageSha256: string;
   timestampUtc: string;
+  /** Model time: from the first upstream attempt to a valid answer (all attempts included). */
   durationMs: number;
+  /** Server time for the whole request, including image work. Absent in older recordings. */
+  requestMs?: number;
+  /** Upstream calls actually made for this result (0 for a cache hit). */
+  attempts?: number;
   retryCount: number;
   cacheHit: boolean;
+  /** For a cache hit: when the cached observations were produced. */
+  cachedAtUtc?: string;
 };
 
 export type AnalyzeResponse = {
@@ -91,28 +106,3 @@ export type AnalyzeResponse = {
   observations: Observation[];
   provenance: Provenance;
 };
-
-/** Gemini/OpenAPI-subset schema handed to the model. Mirrors Observation. */
-export const MODEL_RESPONSE_SCHEMA = {
-  type: 'OBJECT',
-  properties: {
-    observations: {
-      type: 'ARRAY',
-      minItems: 9,
-      maxItems: 9,
-      items: {
-        type: 'OBJECT',
-        properties: {
-          id: { type: 'STRING', enum: [...PATCH_IDS] },
-          surface: { type: 'STRING', enum: [...SURFACES] },
-          material: { type: 'STRING', enum: [...MATERIALS] },
-          visibility: { type: 'STRING', enum: [...VISIBILITIES] },
-          evidence: { type: 'STRING', maxLength: 160 },
-        },
-        required: ['id', 'surface', 'material', 'visibility', 'evidence'],
-        propertyOrdering: ['id', 'surface', 'material', 'visibility', 'evidence'],
-      },
-    },
-  },
-  required: ['observations'],
-} as const;
