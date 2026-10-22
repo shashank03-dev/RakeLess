@@ -6,6 +6,19 @@ Fallen leaves in garden beds and under trees give shelter to insects and the bir
 
 > Every result is a suggestion from a photo. Look at the actual spot before you act.
 
+![RakeLess hero: "Your yard needs less raking than you think." over a glowing dot-matrix leaf, with the recorded run shown as an app window](docs/screenshots/hero.jpg)
+
+---
+
+## A tour of the site
+
+| | |
+|---|---|
+| **Hero.** A dot-matrix leaf that reacts to your cursor, falling leaves, and a real recorded run shown as a 3D app window. Tap any patch to see what Gemma saw. | **Features.** A before/after slider over the real photo, a live model-to-rule demo, a looping correction demo, the cited sources, and the printable yard sign. |
+| ![Hero](docs/screenshots/hero.jpg) | ![Feature grid](docs/screenshots/features.jpg) |
+| **Workbench.** Set your site context, drop a photo, and get a nine-patch map. Click a patch to inspect it, correct the model, and see the source behind each call. | **How it decides.** The six-step pipeline lights up as you scroll, followed by one card per rule showing the result it produces. |
+| ![Workbench](docs/screenshots/workbench.jpg) | ![Rules](docs/screenshots/rules.jpg) |
+
 ---
 
 ## How it works (in 30 seconds)
@@ -124,6 +137,10 @@ The interface is a dark "field lab at dusk": warm near-black, ember light for th
 
 All motion respects `prefers-reduced-motion`. Canvas loops pause when off screen, and the print view (plan plus yard sign) is unchanged.
 
+## Tech stack
+
+React 19, Vite, TypeScript, `motion` for animation, `lucide-react` icons, Zod for the model contract, and `sharp` on the server. Fonts: Instrument Sans, Fraunces (italic accents) and IBM Plex Mono. The styling is plain CSS in `src/styles.css`, with no Tailwind.
+
 ## Project layout
 
 ```
@@ -132,6 +149,7 @@ server/         image normalization, Gemma call, spend guards, handlers, local s
 shared/         schema (Zod), grid geometry, rules, sources (used by server AND browser)
 src/            React app (photo map, inspector, corrections, print view)
 src/ui/         reusable effect components (backgrounds, cards, text, buttons, scroll)
+docs/           README screenshots
 data/           recorded real example run
 tests/          Vitest
 ```
