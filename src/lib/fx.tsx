@@ -1,46 +1,6 @@
 /* Small interaction primitives, in the spirit of React Bits, written for this app. */
 import { animate, motion, useInView, useMotionValue, useReducedMotion, useSpring, useTransform } from 'motion/react';
-import { useEffect, useRef, useState, type ReactNode, type PointerEvent as RPointerEvent } from 'react';
-
-/** Headline that rises in word by word. */
-export function SplitWords({ text, className, delay = 0, italic = [] as string[] }: { text: string; className?: string; delay?: number; italic?: string[] }) {
-  const reduce = useReducedMotion();
-  return (
-    <span className={className} aria-label={text}>
-      {text.split(' ').map((w, i) => (
-        <span key={i} className="split-word" aria-hidden>
-          <motion.span
-            style={{ display: 'inline-block' }}
-            className={italic.includes(w.replace(/[^\w]/g, '')) ? 'em' : undefined}
-            initial={reduce ? false : { y: '105%', opacity: 0, filter: 'blur(6px)' }}
-            animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
-            transition={{ duration: 0.7, delay: delay + i * 0.06, ease: [0.2, 0.7, 0.1, 1] }}
-          >
-            {w}
-          </motion.span>
-        </span>
-      ))}
-    </span>
-  );
-}
-
-/** Button content that leans toward the cursor. */
-export function Magnet({ children, strength = 0.28, className }: { children: ReactNode; strength?: number; className?: string }) {
-  const reduce = useReducedMotion();
-  const x = useSpring(0, { stiffness: 220, damping: 18 });
-  const y = useSpring(0, { stiffness: 220, damping: 18 });
-  const onMove = (e: RPointerEvent<HTMLSpanElement>) => {
-    if (reduce || e.pointerType !== 'mouse') return;
-    const r = e.currentTarget.getBoundingClientRect();
-    x.set((e.clientX - r.left - r.width / 2) * strength);
-    y.set((e.clientY - r.top - r.height / 2) * strength);
-  };
-  return (
-    <motion.span className={`magnet ${className ?? ''}`} style={{ x, y }} onPointerMove={onMove} onPointerLeave={() => { x.set(0); y.set(0); }}>
-      {children}
-    </motion.span>
-  );
-}
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 /** Number that counts to its value when visible, and re-counts when it changes. */
 export function CountUp({ value, className }: { value: number; className?: string }) {
@@ -59,28 +19,13 @@ export function CountUp({ value, className }: { value: number; className?: strin
 }
 
 /** Fade/rise into view once. */
-export function Reveal({ children, delay = 0, className, as = 'div' }: { children: ReactNode; delay?: number; className?: string; as?: 'div' | 'section' | 'li' }) {
+export function Reveal({ children, delay = 0, className, as = 'div' }: { children: ReactNode; delay?: number; className?: string; as?: 'div' | 'section' | 'li' | 'header' }) {
   const reduce = useReducedMotion();
   const M = motion[as];
   return (
-    <M className={className} initial={reduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.6, delay, ease: [0.2, 0.7, 0.1, 1] }}>
+    <M className={className} initial={reduce ? false : { opacity: 0, y: 28, filter: 'blur(6px)' }} whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}>
       {children}
     </M>
-  );
-}
-
-/** Card with a soft light that follows the pointer. */
-export function Spotlight({ children, className, ...rest }: { children: ReactNode; className?: string } & React.HTMLAttributes<HTMLDivElement>) {
-  const ref = useRef<HTMLDivElement>(null);
-  const onMove = (e: RPointerEvent<HTMLDivElement>) => {
-    const r = ref.current!.getBoundingClientRect();
-    ref.current!.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    ref.current!.style.setProperty('--my', `${e.clientY - r.top}px`);
-  };
-  return (
-    <div ref={ref} className={`spotlight ${className ?? ''}`} onPointerMove={onMove} {...rest}>
-      {children}
-    </div>
   );
 }
 
@@ -122,15 +67,15 @@ export function useLeafBurst() {
     <div className="burst-layer" aria-hidden>
       {bursts.map((b) => (
         <div key={b.id} className="burst" style={{ left: b.x, top: b.y }}>
-          {Array.from({ length: 7 }, (_, i) => {
-            const a = (i / 7) * Math.PI * 2 + Math.random() * 0.4;
-            const d = 34 + Math.random() * 26;
+          {Array.from({ length: 10 }, (_, i) => {
+            const a = (i / 10) * Math.PI * 2 + Math.random() * 0.4;
+            const d = 40 + Math.random() * 40;
             return (
               <motion.svg key={i} viewBox="0 0 12 12" width="12" height="12" className="burst-leaf"
                 initial={{ x: 0, y: 0, opacity: 1, rotate: 0, scale: 0.6 }}
                 animate={{ x: Math.cos(a) * d, y: Math.sin(a) * d + 14, opacity: 0, rotate: (Math.random() - 0.5) * 260, scale: 1 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}>
-                <path d="M1 11C1 5 4.5 1.5 11 1c-.5 6.5-4 10-10 10Z" fill={i % 2 ? '#C9822F' : '#7A8F4E'} />
+                <path d="M1 11C1 5 4.5 1.5 11 1c-.5 6.5-4 10-10 10Z" fill={['#ff7a2f', '#a6d86a', '#ffb347'][i % 3]} />
               </motion.svg>
             );
           })}

@@ -5,6 +5,7 @@ import type { EffectiveObservation } from '../../shared/rules';
 import { SOURCES } from '../../shared/sources';
 import { ACTION_META, MATERIAL_LABEL, SURFACE_LABEL } from '../lib/actions';
 import { PatchCrop } from './PhotoMap';
+import { Segmented } from '../ui/Segmented';
 
 type Props = {
   id: PatchId;
@@ -69,28 +70,14 @@ export function PatchInspector({ id, src, width, height, original, effective, de
       <fieldset className="correct">
         <legend>Correct what the model saw <span className="fineprint">— no new photo is sent</span></legend>
         <div className="seg-label">Surface</div>
-        <div className="seg" role="radiogroup" aria-label="Surface">
-          {SURFACES.map((s) => (
-            <button key={s} type="button" role="radio" aria-checked={effective.surface === s}
-              className={`chip ${effective.surface === s ? 'on' : ''} ${correction?.surface === s ? 'user' : ''}`}
-              onClick={() => set({ surface: s as Surface })}>
-              {SURFACE_LABEL[s]}
-            </button>
-          ))}
-        </div>
+        <Segmented name={`surface-${id}`} label="Surface" size="sm" value={effective.surface} userValue={correction?.surface}
+          options={SURFACES.map((v) => ({ v, label: SURFACE_LABEL[v] }))} onChange={(v: Surface) => set({ surface: v })} />
         {effective.surface === 'path_or_steps' && !correction?.surface && (
           <button type="button" className="link-btn" onClick={() => set({ surface: 'path_or_steps' })}>Confirm this is a path I use</button>
         )}
         <div className="seg-label">On the ground</div>
-        <div className="seg" role="radiogroup" aria-label="Material">
-          {MATERIALS.map((m) => (
-            <button key={m} type="button" role="radio" aria-checked={effective.material === m}
-              className={`chip ${effective.material === m ? 'on' : ''} ${correction?.material === m ? 'user' : ''}`}
-              onClick={() => set({ material: m as Material })}>
-              {MATERIAL_LABEL[m]}
-            </button>
-          ))}
-        </div>
+        <Segmented name={`material-${id}`} label="Material" size="sm" value={effective.material} userValue={correction?.material}
+          options={MATERIALS.map((v) => ({ v, label: MATERIAL_LABEL[v] }))} onChange={(v: Material) => set({ material: v })} />
         <label className="check">
           <input type="checkbox" checked={!!correction?.siteConcern} onChange={(e) => set({ siteConcern: e.target.checked })} />
           <span>Known plant disease or other concern in this patch</span>

@@ -1,18 +1,26 @@
 import { AnimatePresence, motion } from 'motion/react';
-import { AlertTriangle, ArrowDown, ArrowRight, Download, FlaskConical, Printer, RotateCcw, Radio } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Download, FlaskConical, Printer, RotateCcw, Radio } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_CONTEXT, type Context, type Correction, type PatchId } from '../shared/schema';
 import { applyCorrections, decide, summarize } from '../shared/rules';
+import { SOURCES } from '../shared/sources';
 import exampleRun from '../data/example-run.json';
 import { analyzePhoto, ApiError, getExample, type Run, type Stage } from './lib/api';
-import { CountUp, Magnet, Reveal, SplitWords, Tilt, VelocityMarquee, useLeafBurst } from './lib/fx';
+import { CountUp, Reveal, VelocityMarquee, useLeafBurst } from './lib/fx';
 import { ACTION_META } from './lib/actions';
+import { GlowButton } from './ui/buttons';
+import { GlowCard } from './ui/cards';
+import { InfiniteCards } from './ui/scroll';
+import { Nav } from './components/Nav';
+import { Hero } from './components/Hero';
+import { Bento } from './components/Bento';
+import { FinalCta, Footer } from './components/Closing';
 import { PhotoMap } from './components/PhotoMap';
 import { PatchInspector } from './components/PatchInspector';
 import { ActionList } from './components/ActionList';
 import { ChoreLedger } from './components/ChoreLedger';
 import { ContextPanel } from './components/ContextPanel';
-import { ModelStatus, useHealth } from './components/ModelStatus';
+import { useHealth } from './components/ModelStatus';
 import { Stages } from './components/Stages';
 import { Dropzone } from './components/Dropzone';
 import { HowItDecides } from './components/HowItDecides';
@@ -20,107 +28,45 @@ import { Limits } from './components/Limits';
 import { PrintPlan } from './components/PrintPlan';
 
 const EXAMPLE = exampleRun as unknown as Run;
-const HERO_CTX: Context = { region: 'temperate_na', season: 'autumn', concerns: 'none' };
 
 export default function App() {
   const health = useHealth();
   const workbench = useRef<HTMLElement>(null);
   const goTry = () => workbench.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   const [requestExample, setRequestExample] = useState(0);
+  const showExample = () => { setRequestExample((n) => n + 1); goTry(); };
 
   return (
     <>
       <div className="grain" aria-hidden />
       <Nav health={health} />
       <main>
-        <Hero onTry={goTry} onExample={() => { setRequestExample((n) => n + 1); goTry(); }} />
+        <Hero example={EXAMPLE} onTry={goTry} onExample={showExample} />
+        <SourcesStrip />
+        <Bento example={EXAMPLE} />
         <VelocityMarquee items={['Leave for now', 'Clear access', 'Review closely', 'No leaf task', 'Inspect before acting']} />
         <Workbench ref={workbench} requestExample={requestExample} modelReady={health !== null && health !== 'error' && health.model.ready} />
         <HowItDecides />
         <Limits />
+        <FinalCta onTry={goTry} onExample={showExample} />
       </main>
       <Footer />
     </>
   );
 }
 
-function Nav({ health }: { health: ReturnType<typeof useHealth> }) {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 24);
-    on();
-    window.addEventListener('scroll', on, { passive: true });
-    return () => window.removeEventListener('scroll', on);
-  }, []);
+function SourcesStrip() {
   return (
-    <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
-      <a href="#top" className="wordmark" aria-label="RakeLess home">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z" fill="var(--amber)" /><path d="M4 20 13 11" stroke="var(--ink)" strokeWidth="1.6" strokeLinecap="round" /></svg>
-        <span>Rake<em>Less</em></span>
-      </a>
-      <nav aria-label="Sections">
-        <a href="#try">Try it</a>
-        <a href="#rules">How it decides</a>
-        <a href="#limits">Limits</a>
-      </nav>
-      <ModelStatus health={health} />
-    </header>
-  );
-}
-
-function Hero({ onTry, onExample }: { onTry: () => void; onExample: () => void }) {
-  const decisions = useMemo(() => decide(EXAMPLE.observations, HERO_CTX), []);
-  const effective = useMemo(() => applyCorrections(EXAMPLE.observations, []), []);
-  const s = summarize(decisions);
-  const leafy = s.leave + s.clear + s.review;
-  const [sel, setSel] = useState<PatchId | null>(null);
-  const d = decisions.find((x) => x.id === sel);
-  return (
-    <section id="top" className="hero">
-      <div className="hero-copy">
-        <motion.span className="mono kicker" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}>
-          Autumn field notes · temperate North America
-        </motion.span>
-        <h1 className="display">
-          <SplitWords text="Your yard may need less tidying than you think." italic={['less']} delay={0.15} />
-        </h1>
-        <motion.p className="hero-sub" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.6 }}>
-          Take a photo of your autumn yard. RakeLess marks which leaves you can leave alone and which spots still need clearing. Every suggestion comes with its reason.
-        </motion.p>
-        <motion.div className="hero-ctas" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.85, duration: 0.6 }}>
-          <Magnet><button type="button" className="btn btn-amber btn-lg" onClick={onTry}>Check my photo <ArrowRight size={18} aria-hidden /></button></Magnet>
-          <Magnet><button type="button" className="btn btn-ghost btn-lg" onClick={onExample}><FlaskConical size={17} aria-hidden /> See a recorded example</button></Magnet>
-        </motion.div>
-        <motion.dl className="hero-stats" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }}>
-          <div><dt>Leafy patches in this photo</dt><dd><CountUp value={leafy} /></dd></div>
-          <div><dt>Raking chores that can wait</dt><dd className="moss"><CountUp value={s.leave} /></dd></div>
-          <div><dt>Paths to still clear</dt><dd className="brick"><CountUp value={s.clear} /></dd></div>
-        </motion.dl>
-      </div>
-
-      <motion.div className="hero-visual" initial={{ opacity: 0, y: 30, rotate: 1.5 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ delay: 0.3, duration: 0.9, ease: [0.2, 0.7, 0.1, 1] }}>
-        <Tilt className="polaroid">
-          <PhotoMap src={EXAMPLE.image.src} width={EXAMPLE.image.width} height={EXAMPLE.image.height} decisions={decisions} effective={effective} selected={sel} onSelect={(id) => setSel(id === sel ? null : id)} compact />
-          <div className="polaroid-caption">
-            <AnimatePresence mode="wait">
-              {d ? (
-                <motion.p key={d.id} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <span className="mono">{d.id}</span> {d.title}. <span className="muted">{EXAMPLE.observations.find((o) => o.id === d.id)?.evidence}</span>
-                </motion.p>
-              ) : (
-                <motion.p key="hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                  <span className="mono rec">● REC</span> Saved real run of {EXAMPLE.provenance.modelName}. Tap a patch.
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
-        </Tilt>
-        <motion.div className="hero-ledger" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.9, duration: 0.6 }}>
-          <ChoreLedger decisions={decisions} />
-        </motion.div>
-        <p className="credit">Photo: “Fallen Leaves October 2011” by Michael Gil, Ontario, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noreferrer">CC BY 2.0</a>. Resized, grid added.</p>
-      </motion.div>
-      <a href="#try" className="scroll-cue" aria-label="Scroll to the workbench"><ArrowDown size={16} /></a>
+    <section className="sources-strip">
+      <p className="strip-label mono">Rules informed by</p>
+      <InfiniteCards label="Sources behind the rules" speed={46}>
+        {Object.values(SOURCES).map((s) => (
+          <a key={s.id} href={s.url} target="_blank" rel="noreferrer" className="strip-card">
+            <span className="strip-pub">{s.publisher}</span>
+            <span className="strip-title">{s.title}</span>
+          </a>
+        ))}
+      </InfiniteCards>
     </section>
   );
 }
@@ -233,22 +179,26 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
 
   return (
     <section id="try" ref={ref} className="section workbench">
-      <Reveal className="section-head">
-        <span className="mono kicker">01 — The notebook</span>
-        <h2 className="h2">One photo. Nine patches. <em>A reason</em> for each one.</h2>
+      <Reveal as="header" className="section-head center">
+        <span className="eyebrow">The workbench</span>
+        <h2 className="h2">One photo. Nine patches. <span className="accent">A reason</span> for each one.</h2>
+        <p className="lede">Tell RakeLess about your site, add a photo, and get a map you can correct patch by patch.</p>
       </Reveal>
 
       <div className="steps">
-        <Reveal className="step">
-          <div className="step-num mono">A</div>
+        <Reveal className="step-wrap">
+          <GlowCard className="step">
+          <div className="step-num mono">01</div>
           <div className="step-body">
             <h3 className="h3">Your site</h3>
             <ContextPanel ctx={ctx} onChange={setCtx} />
           </div>
+          </GlowCard>
         </Reveal>
 
-        <Reveal className="step" delay={0.05}>
-          <div className="step-num mono">B</div>
+        <Reveal className="step-wrap" delay={0.05}>
+          <GlowCard className="step">
+          <div className="step-num mono">02</div>
           <div className="step-body">
             <h3 className="h3">Your photo</h3>
             {!run && !pending && (
@@ -269,7 +219,7 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
                 ) : (
                   <div className="pending-actions">
                     <p className="mono fineprint">{pending.file.name} · {(pending.file.size / 1024 / 1024).toFixed(1)} MB</p>
-                    <Magnet><button type="button" className="btn btn-amber" onClick={analyze} disabled={!modelReady}>Analyze with Gemma <ArrowRight size={16} aria-hidden /></button></Magnet>
+                    <GlowButton onClick={analyze} disabled={!modelReady}>Analyze with Gemma <ArrowRight size={16} aria-hidden /></GlowButton>
                     <button type="button" className="link-btn" onClick={() => reset(false)}>Choose a different photo</button>
                   </div>
                 )}
@@ -284,6 +234,7 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
               )}
             </AnimatePresence>
           </div>
+          </GlowCard>
         </Reveal>
       </div>
 
@@ -353,9 +304,9 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
                 )}
               </AnimatePresence>
               <div className="toolbar">
-                <button type="button" className="btn btn-ghost" onClick={exportJson}><Download size={16} aria-hidden /> Export JSON</button>
-                <button type="button" className="btn btn-ghost" onClick={() => window.print()}><Printer size={16} aria-hidden /> Print plan</button>
-                <button type="button" className="btn btn-ghost" onClick={() => reset(true)}><RotateCcw size={16} aria-hidden /> Start over</button>
+                <GlowButton size="sm" variant="ghost" magnetic={false} onClick={exportJson}><Download size={15} aria-hidden /> Export JSON</GlowButton>
+                <GlowButton size="sm" variant="ghost" magnetic={false} onClick={() => window.print()}><Printer size={15} aria-hidden /> Print plan</GlowButton>
+                <GlowButton size="sm" variant="quiet" magnetic={false} onClick={() => reset(true)}><RotateCcw size={15} aria-hidden /> Start over</GlowButton>
                 <label className="check small"><input type="checkbox" checked={withSign} onChange={(e) => setWithSign(e.target.checked)} /> Include a yard sign page</label>
               </div>
             </aside>
@@ -367,16 +318,3 @@ const Workbench = ({ ref, requestExample, modelReady }: { ref: React.Ref<HTMLEle
     </section>
   );
 };
-
-function Footer() {
-  return (
-    <footer className="footer">
-      <div className="footer-big" aria-hidden>Rake<em>less</em>.</div>
-      <div className="footer-cols">
-        <p>A small build for the DEV Hacktoberfest Open-Source AI Challenge, Week 3: Slow and Steady. Gemma 4 open-weight vision, served through the Gemini API. The rules are plain TypeScript.</p>
-        <p>Sources inform the prototype rules. They are not endorsements or expert review of this app. Photo credit: Michael Gil, CC BY 2.0.</p>
-        <p className="mono">MIT licensed · no accounts · no tracking · photos are not stored</p>
-      </div>
-    </footer>
-  );
-}
