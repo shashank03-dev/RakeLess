@@ -12,6 +12,22 @@
 
 This is a public roadside/farm scene, not anyone's backyard. RakeLess makes no claim about who owns it or what should be done there.
 
+## Evaluation photographs
+
+Seven photos from Wikimedia Commons are stored unmodified (Wikimedia-generated thumbnails) in `eval/images/` for the evaluation in `eval/`. Title, author, license, source page and input hash for each are in `eval/manifest.json`:
+
+| File | Author | License |
+|---|---|---|
+| `e01-nj-lawn-sidewalk.jpg` | Famartin | CC BY-SA 4.0 |
+| `e02-md-driveway-closeup.jpg` | Mark Schellhase | CC BY-SA 4.0 |
+| `e03-uk-garden-steps.jpg` | Acabashi | CC BY-SA 4.0 |
+| `e04-uk-woodland-litter.jpg` | Acabashi | CC BY-SA 4.0 |
+| `e05-it-sidewalk-gate.jpg` | Anna.Massini | CC BY 4.0 |
+| `e06-uk-leaf-pile-dark.jpg` | McKay Savage | CC BY 2.0 |
+| `e07-uk-coppice-january.jpg` | Bob Embleton | CC BY-SA 2.0 |
+
+The local demo video shows `e01` (CC BY-SA 4.0, Famartin) with the RakeLess grid and colored overlay drawn on top.
+
 ## Rule references
 
 The rules paraphrase these sources in our own words. They inform a prototype and are not endorsements or expert reviews of RakeLess.
