@@ -1,0 +1,6 @@
+date_utc: 2026-10-22T19:08:13Z
+interfaces in this namespace: ['lo']
+external 1.1.1.1 blocked: [Errno 101] Network is unreachable
+external 8.8.8.8 blocked: [Errno 101] Network is unreachable
+external 142.250.0.0 blocked: [Errno 101] Network is unreachable
+dns blocked: [Errno -3] Temporary failure in name resolution

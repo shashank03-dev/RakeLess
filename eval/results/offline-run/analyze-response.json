@@ -1,0 +1,91 @@
+{
+  "image": {
+    "width": 1536,
+    "height": 1152,
+    "src": "[omitted: data URL of the normalized photo]"
+  },
+  "observations": [
+    {
+      "id": "A1",
+      "surface": "lawn",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "The surface appears to be grass with some visible leaves."
+    },
+    {
+      "id": "A2",
+      "surface": "lawn",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "The grass shows scattered fallen leaves."
+    },
+    {
+      "id": "A3",
+      "surface": "lawn",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "This area is covered with fallen leaves on the grass."
+    },
+    {
+      "id": "B1",
+      "surface": "lawn",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "The grass in this section has some scattered leaves."
+    },
+    {
+      "id": "B2",
+      "surface": "lawn",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "The grass is visible with some fallen leaves on it."
+    },
+    {
+      "id": "B3",
+      "surface": "path_or_steps",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "The path is covered with fallen leaves."
+    },
+    {
+      "id": "C1",
+      "surface": "lawn",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "This cell is densely covered with fallen red leaves on the grass."
+    },
+    {
+      "id": "C2",
+      "surface": "lawn",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "The grass is heavily covered with fallen red leaves."
+    },
+    {
+      "id": "C3",
+      "surface": "path_or_steps",
+      "material": "fallen_leaves",
+      "visibility": "clear",
+      "evidence": "The path is covered with a layer of fallen leaves."
+    }
+  ],
+  "provenance": {
+    "provider": "ollama",
+    "providerLabel": "Ollama on this machine",
+    "localInference": true,
+    "modelName": "gemma4:e4b",
+    "promptVersion": "prompt-2026-10-22.3",
+    "rulesVersion": "rules-2026-10-22.2",
+    "normalizedImageSha256": "e37bc5b36d5a369edca91109128254cc966516a2c5d6c8b39baf5fed47066d28",
+    "mode": "live",
+    "modelVersion": "gemma4:e4b@sha256:dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+    "timestampUtc": "2026-10-22T19:10:53.923Z",
+    "durationMs": 111311,
+    "requestMs": 112557,
+    "attempts": 1,
+    "retryCount": 0,
+    "cacheHit": false
+  },
+  "clientWallMs": 112621,
+  "photo": "eval/images/e01-nj-lawn-sidewalk.jpg"
+}

@@ -1,0 +1,2073 @@
+{
+  "summary": {
+    "runAtUtc": "2026-10-22T17:39:25.144Z",
+    "provider": "ollama",
+    "providerLabel": "Ollama on this machine",
+    "localInference": true,
+    "modelName": "gemma4:e4b",
+    "modelVersion": "gemma4:e4b@sha256:dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+    "promptVersion": "prompt-2026-10-22.3",
+    "rulesVersion": "rules-2026-10-22.2",
+    "label": null,
+    "scenes": 7,
+    "schemaSuccess": {
+      "n": 7,
+      "d": 7,
+      "pct": 100
+    },
+    "totalAttempts": 7,
+    "scenesNeedingRetry": 0,
+    "wallMs": [
+      225611,
+      123614,
+      105488,
+      128094,
+      128860,
+      113997,
+      94929
+    ],
+    "inferenceMs": [
+      224279,
+      122995,
+      104787,
+      127097,
+      127801,
+      113360,
+      94661
+    ],
+    "observation": {
+      "allCells": {
+        "surface": {
+          "n": 21,
+          "d": 63,
+          "pct": 33.3
+        },
+        "material": {
+          "n": 30,
+          "d": 63,
+          "pct": 47.6
+        },
+        "visibility": {
+          "n": 29,
+          "d": 63,
+          "pct": 46
+        }
+      },
+      "groundCells": {
+        "surface": {
+          "n": 13,
+          "d": 49,
+          "pct": 26.5
+        },
+        "material": {
+          "n": 30,
+          "d": 49,
+          "pct": 61.2
+        },
+        "visibility": {
+          "n": 23,
+          "d": 49,
+          "pct": 46.9
+        }
+      }
+    },
+    "actions": {
+      "documentedContext": {
+        "allCells": {
+          "agreement": {
+            "n": 39,
+            "d": 63,
+            "pct": 61.9
+          },
+          "modelReviewRate": {
+            "n": 61,
+            "d": 63,
+            "pct": 96.8
+          },
+          "actionableCoverage": {
+            "n": 1,
+            "d": 7,
+            "pct": 14.3
+          },
+          "criticalConfusions": {
+            "n": 0,
+            "d": 63,
+            "pct": 0
+          },
+          "confusion": {
+            "none→review": 17,
+            "review→review": 38,
+            "review→clear": 1,
+            "clear→clear": 1,
+            "clear→review": 6
+          }
+        },
+        "groundCells": {
+          "agreement": {
+            "n": 39,
+            "d": 49,
+            "pct": 79.6
+          },
+          "modelReviewRate": {
+            "n": 47,
+            "d": 49,
+            "pct": 95.9
+          },
+          "actionableCoverage": {
+            "n": 1,
+            "d": 7,
+            "pct": 14.3
+          },
+          "criticalConfusions": {
+            "n": 0,
+            "d": 49,
+            "pct": 0
+          },
+          "confusion": {
+            "review→review": 38,
+            "review→clear": 1,
+            "clear→clear": 1,
+            "clear→review": 6,
+            "none→review": 3
+          }
+        }
+      },
+      "inScopeCounterfactual": {
+        "allCells": {
+          "agreement": {
+            "n": 20,
+            "d": 63,
+            "pct": 31.7
+          },
+          "modelReviewRate": {
+            "n": 61,
+            "d": 63,
+            "pct": 96.8
+          },
+          "actionableCoverage": {
+            "n": 1,
+            "d": 26,
+            "pct": 3.8
+          },
+          "criticalConfusions": {
+            "n": 0,
+            "d": 63,
+            "pct": 0
+          },
+          "confusion": {
+            "none→review": 17,
+            "review→review": 19,
+            "review→clear": 1,
+            "clear→clear": 1,
+            "clear→review": 10,
+            "leave→review": 15
+          }
+        },
+        "groundCells": {
+          "agreement": {
+            "n": 20,
+            "d": 49,
+            "pct": 40.8
+          },
+          "modelReviewRate": {
+            "n": 47,
+            "d": 49,
+            "pct": 95.9
+          },
+          "actionableCoverage": {
+            "n": 1,
+            "d": 26,
+            "pct": 3.8
+          },
+          "criticalConfusions": {
+            "n": 0,
+            "d": 49,
+            "pct": 0
+          },
+          "confusion": {
+            "review→review": 19,
+            "review→clear": 1,
+            "clear→clear": 1,
+            "clear→review": 10,
+            "none→review": 3,
+            "leave→review": 15
+          }
+        }
+      }
+    }
+  },
+  "results": [
+    {
+      "scene": "e01-nj-lawn-sidewalk",
+      "split": "evaluation",
+      "covers": [
+        "lawn",
+        "path",
+        "mixed",
+        "tree base",
+        "canopy"
+      ],
+      "context": {
+        "region": "temperate_na",
+        "season": "autumn",
+        "concerns": "none"
+      },
+      "contextSource": "Commons title/description: Ewing Township, New Jersey, 2023-11-13 (\"late autumn\"). Concerns set to none for evaluation.",
+      "normalizedImageSha256": "e37bc5b36d5a369edca91109128254cc966516a2c5d6c8b39baf5fed47066d28",
+      "wallMs": 225611,
+      "schemaOk": true,
+      "error": null,
+      "inferenceMs": 224279,
+      "attempts": 1,
+      "modelVersion": "gemma4:e4b@sha256:dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+      "cells": [
+        {
+          "id": "A1",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "lawn",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The surface appears to be grass with some visible leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R7"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R7"
+            }
+          }
+        },
+        {
+          "id": "A2",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "lawn",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The grass shows scattered fallen leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R7"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R7"
+            }
+          }
+        },
+        {
+          "id": "A3",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "lawn",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "This area is covered with fallen leaves on the grass."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R7"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R7"
+            }
+          }
+        },
+        {
+          "id": "B1",
+          "ground": true,
+          "reference": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "lawn",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The grass in this section has some scattered leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R7"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R7"
+            }
+          }
+        },
+        {
+          "id": "B2",
+          "ground": true,
+          "reference": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "lawn",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The grass is visible with some fallen leaves on it."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R7"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R7"
+            }
+          }
+        },
+        {
+          "id": "B3",
+          "ground": true,
+          "reference": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The path is covered with fallen leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "clear",
+              "rule": "R3"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "clear",
+              "rule": "R3"
+            }
+          }
+        },
+        {
+          "id": "C1",
+          "ground": true,
+          "reference": {
+            "surface": "lawn",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "lawn",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "This cell is densely covered with fallen red leaves on the grass."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R7"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R7"
+            }
+          }
+        },
+        {
+          "id": "C2",
+          "ground": true,
+          "reference": {
+            "surface": "lawn",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "lawn",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The grass is heavily covered with fallen red leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R7"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R7"
+            }
+          }
+        },
+        {
+          "id": "C3",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The path is covered with a layer of fallen leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "clear",
+              "model": "clear",
+              "rule": "R3"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "clear",
+              "rule": "R3"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scene": "e02-md-driveway-closeup",
+      "split": "evaluation",
+      "covers": [
+        "path",
+        "poor visibility (shallow focus)"
+      ],
+      "context": {
+        "region": "temperate_na",
+        "season": "autumn",
+        "concerns": "none"
+      },
+      "contextSource": "Commons description: \"Autumn leaves fallen on a driveway in Maryland.\" Concerns set to none for evaluation.",
+      "normalizedImageSha256": "9acc612915af94ddb20c12ab68bb3fd01aff43faa42ed6931c838d8229f10649",
+      "wallMs": 123614,
+      "schemaOk": true,
+      "error": null,
+      "inferenceMs": 122995,
+      "attempts": 1,
+      "modelVersion": "gemma4:e4b@sha256:dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+      "cells": [
+        {
+          "id": "A1",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "unclear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A2",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "unclear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A3",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "unclear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B1",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B2",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B3",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C1",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C2",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C3",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scene": "e03-uk-garden-steps",
+      "split": "evaluation",
+      "covers": [
+        "steps",
+        "beds",
+        "mixed",
+        "out of scope (region)",
+        "partly blocked ground"
+      ],
+      "context": {
+        "region": "other",
+        "season": "other",
+        "concerns": "none"
+      },
+      "contextSource": "Commons description: private garden, Nuthurst, West Sussex, England; no season stated, so season is set to other. Concerns set to none.",
+      "normalizedImageSha256": "ed6ffcdfde1b5563ea8740e07871f353368022d57894ea9670e5314d8e9eaee3",
+      "wallMs": 105488,
+      "schemaOk": true,
+      "error": null,
+      "inferenceMs": 104787,
+      "attempts": 1,
+      "modelVersion": "gemma4:e4b@sha256:dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+      "cells": [
+        {
+          "id": "A1",
+          "ground": true,
+          "reference": {
+            "surface": "mixed",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is not clearly discernible."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A2",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is not clearly discernible."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A3",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is not clearly discernible."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B1",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is not clearly discernible."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B2",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is not clearly discernible."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B3",
+          "ground": true,
+          "reference": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is not clearly discernible."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C1",
+          "ground": true,
+          "reference": {
+            "surface": "mixed",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is not clearly discernible."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C2",
+          "ground": true,
+          "reference": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is not clearly discernible."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C3",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "no_relevant_leaves",
+            "visibility": "unclear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is not clearly discernible."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scene": "e04-uk-woodland-litter",
+      "split": "evaluation",
+      "covers": [
+        "woodland floor (bed/tree base)",
+        "out of scope (region)"
+      ],
+      "context": {
+        "region": "other",
+        "season": "other",
+        "concerns": "none"
+      },
+      "contextSource": "Commons description: leaf litter, Epping Forest, Essex, England; no season stated. Concerns set to none.",
+      "normalizedImageSha256": "72e7b44ae7d10c5def4e3c618249b2fbd6b60b81e9cbc8b2973c2f9c7e766316",
+      "wallMs": 128094,
+      "schemaOk": true,
+      "error": null,
+      "inferenceMs": 127097,
+      "attempts": 1,
+      "modelVersion": "gemma4:e4b@sha256:dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+      "cells": [
+        {
+          "id": "A1",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The cell shows a mix of brown and dark leaf litter."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A2",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "This area is covered with various shades of dry leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A3",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The surface consists of scattered brown and dark leaf fragments."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B1",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The cell contains a dense layer of mixed leaf debris."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B2",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The ground is covered with numerous dry, fallen leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B3",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "This section displays a thick accumulation of brown leaf litter."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C1",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The cell shows exposed soil mixed with fallen branches and leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C2",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "There is a mix of leaf litter and visible woody debris in this area."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C3",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear",
+            "evidence": "The surface is dominated by dry, brown fallen leaves and soil."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scene": "e05-it-sidewalk-gate",
+      "split": "evaluation",
+      "covers": [
+        "path",
+        "sky/buildings (no ground)",
+        "mixed",
+        "out of scope (region)"
+      ],
+      "context": {
+        "region": "other",
+        "season": "autumn",
+        "concerns": "none"
+      },
+      "contextSource": "Commons description (Italian): \"Autunno sul marciapiede con foglie e pioggia\" (autumn on the sidewalk, leaves and rain). Italy, so region other.",
+      "normalizedImageSha256": "4f8e172e680ed84be4e21da72ef063b58762ff8acaff1ca41388ac7c7ab3639d",
+      "wallMs": 128860,
+      "schemaOk": true,
+      "error": null,
+      "inferenceMs": 127801,
+      "attempts": 1,
+      "modelVersion": "gemma4:e4b@sha256:dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+      "cells": [
+        {
+          "id": "A1",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "path_or_steps",
+            "material": "mixed_or_unclear",
+            "visibility": "clear",
+            "evidence": "The surface appears to be made of stone or concrete."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A2",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "path_or_steps",
+            "material": "mixed_or_unclear",
+            "visibility": "clear",
+            "evidence": "The ground in this area is covered with fallen leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A3",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "path_or_steps",
+            "material": "mixed_or_unclear",
+            "visibility": "clear",
+            "evidence": "The ground shows a mix of dirt and fallen leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B1",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "This area is heavily obscured by foliage."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B2",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "The area is densely covered with green vegetation."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B3",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "mixed_or_unclear",
+            "visibility": "unclear",
+            "evidence": "This section is dominated by dense green bushes and trees."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C1",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "path_or_steps",
+            "material": "mixed_or_unclear",
+            "visibility": "clear",
+            "evidence": "The ground is a dirt or paved surface covered in many fallen leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C2",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "path_or_steps",
+            "material": "mixed_or_unclear",
+            "visibility": "clear",
+            "evidence": "The ground is covered with a thick layer of yellow and brown fallen leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C3",
+          "ground": true,
+          "reference": {
+            "surface": "mixed",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "path_or_steps",
+            "material": "mixed_or_unclear",
+            "visibility": "clear",
+            "evidence": "The ground is covered with fallen leaves and some exposed dirt."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scene": "e06-uk-leaf-pile-dark",
+      "split": "evaluation",
+      "covers": [
+        "leaf pile, surface hidden",
+        "poor visibility (dark)",
+        "out of scope (region)"
+      ],
+      "context": {
+        "region": "other",
+        "season": "autumn",
+        "concerns": "none"
+      },
+      "contextSource": "Flickr/Commons description: London, UK; \"the leaves are all down and collecting in piles on driveways\" (autumn).",
+      "normalizedImageSha256": "9bb860d2914bf3845acdb69c71a7ce0c1a23827c271f2429b3761ffba2656acb",
+      "wallMs": 113997,
+      "schemaOk": true,
+      "error": null,
+      "inferenceMs": 113360,
+      "attempts": 1,
+      "modelVersion": "gemma4:e4b@sha256:dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+      "cells": [
+        {
+          "id": "A1",
+          "ground": true,
+          "reference": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The cell contains dark, overlapping leaf material."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A2",
+          "ground": true,
+          "reference": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "This area shows a mix of brown and green leaf fragments."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A3",
+          "ground": true,
+          "reference": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The cell is covered with various shades of dried leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B1",
+          "ground": true,
+          "reference": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "Dark, shadowed leaf litter occupies this section."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B2",
+          "ground": true,
+          "reference": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "This cell displays a mix of brown and green leaf surfaces."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B3",
+          "ground": true,
+          "reference": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The surface is covered by numerous brown, dried leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C1",
+          "ground": true,
+          "reference": {
+            "surface": "path_or_steps",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The cell shows a mix of dirt and leaf debris."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "clear",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C2",
+          "ground": true,
+          "reference": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "A bright green leaf is visible among the brown leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C3",
+          "ground": true,
+          "reference": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "This area is dominated by large, reddish-brown fallen leaves."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scene": "e07-uk-coppice-january",
+      "split": "evaluation",
+      "covers": [
+        "woodland floor",
+        "trunks/canopy",
+        "out of scope (region and season)"
+      ],
+      "context": {
+        "region": "other",
+        "season": "other",
+        "concerns": "none"
+      },
+      "contextSource": "Geograph/Commons title: \"Woodland Floor in January, Mayall's Coppice\" (England, January), so season other.",
+      "normalizedImageSha256": "41e41e3818e830889f2f6da97a10de09190e6ab5392604bda7d2ab145159df47",
+      "wallMs": 94929,
+      "schemaOk": true,
+      "error": null,
+      "inferenceMs": 94661,
+      "attempts": 1,
+      "modelVersion": "gemma4:e4b@sha256:dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+      "cells": [
+        {
+          "id": "A1",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A2",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "A3",
+          "ground": false,
+          "reference": {
+            "surface": "unknown",
+            "material": "no_relevant_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "none",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B1",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B2",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "B3",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C1",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C2",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        },
+        {
+          "id": "C3",
+          "ground": true,
+          "reference": {
+            "surface": "bed_or_tree_base",
+            "material": "fallen_leaves",
+            "visibility": "clear"
+          },
+          "model": {
+            "surface": "unknown",
+            "material": "fallen_leaves",
+            "visibility": "unclear",
+            "evidence": "The surface in this cell is unclear."
+          },
+          "action": {
+            "documented": {
+              "reference": "review",
+              "model": "review",
+              "rule": "R2"
+            },
+            "inScope": {
+              "reference": "leave",
+              "model": "review",
+              "rule": "R5"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
